@@ -25,6 +25,13 @@ CREATE TABLE groups (
     CONSTRAINT PK_group PRIMARY KEY (group_id)
 );
 
+CREATE TABLE category (
+    category_id SERIAL,
+    category_name varchar(100) NOT NULL UNIQUE,
+    CONSTRAINT PK_category PRIMARY KEY (category_id)
+);
+
+
 CREATE TABLE group_user (
     group_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
@@ -74,6 +81,14 @@ CREATE TABLE user_list(
     CONSTRAINT PK_user_list PRIMARY KEY (user_id, list_id),
     CONSTRAINT FK_user_list_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     CONSTRAINT FK_user_list_list FOREIGN KEY (list_id) REFERENCES lists(list_id) ON DELETE CASCADE
+);
+
+CREATE TABLE category_item(
+    category_id INTEGER NOT NULL,
+    item_id INTEGER NOT NULL,
+    CONSTRAINT PK_category_item PRIMARY KEY (category_id, item_id),
+    CONSTRAINT FK_category_item_category FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE,
+    CONSTRAINT FK_category_item_item FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );
 
 COMMIT TRANSACTION;
