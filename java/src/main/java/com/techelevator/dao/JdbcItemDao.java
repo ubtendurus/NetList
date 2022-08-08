@@ -58,7 +58,7 @@ public class JdbcItemDao implements ItemDao {
     @Override
     public List<Item> getAllItems() {
         List<Item> items = new ArrayList<>();
-        String sql = "select * from items";
+        String sql = "SELECT * FROM items";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
