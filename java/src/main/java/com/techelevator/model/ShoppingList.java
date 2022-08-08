@@ -1,24 +1,21 @@
 package com.techelevator.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.util.Date;
+import java.time.LocalDate;
 
 
-public class List {
+public class ShoppingList {
     private Long listId;
 private String listName;
 private Long ownerId;
-private Date createdAt;
+private LocalDate createdAt;
 private Long retailerId;
 
-public List(){
+public ShoppingList(){
 
 }
 
 
-    public List(Long listId, String listName, Long ownerId, Date createdAt, Long retailerId) {
+    public ShoppingList(Long listId, String listName, Long ownerId, LocalDate createdAt, Long retailerId) {
         this.listId = listId;
         this.listName = listName;
         this.ownerId = ownerId;
@@ -50,11 +47,11 @@ public List(){
         this.ownerId = ownerId;
     }
 
-    public Date getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
