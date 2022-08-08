@@ -19,4 +19,6 @@ public interface GroupDao {
     List<Group> getAllGroups();
 
     List<Group> getGroupsByUserId(Long userId);
+
+
 }

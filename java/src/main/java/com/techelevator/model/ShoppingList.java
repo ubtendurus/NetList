@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 public class ShoppingList {
-    private Long listId;
+private Long listId;
 private String listName;
 private Long ownerId;
 private LocalDate createdAt;

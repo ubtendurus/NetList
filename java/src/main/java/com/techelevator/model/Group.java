@@ -3,14 +3,16 @@ package com.techelevator.model;
 public class Group {
     private Long groupId;
     private String groupName;
+    private String groupKey;
 
     public Group() {
 
     }
 
-    public Group(Long groupId, String groupName) {
+    public Group(Long groupId, String groupName, String groupKey) {
         this.groupId = groupId;
         this.groupName = groupName;
+        this.groupKey = groupKey;
     }
 
     public Long getGroupId() {
@@ -27,5 +29,13 @@ public class Group {
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
+    }
+
+    public String getGroupKey() {
+        return groupKey;
+    }
+
+    public void setGroupKey(String groupKey) {
+        this.groupKey = groupKey;
     }
 }

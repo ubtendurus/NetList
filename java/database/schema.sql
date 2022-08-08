@@ -25,6 +25,7 @@ CREATE TABLE users (
 CREATE TABLE groups (
     group_id SERIAL,
     group_name varchar(100) NOT NULL UNIQUE,
+    group_key varchar(8) NOT NULL UNIQUE,
     CONSTRAINT PK_group PRIMARY KEY (group_id)
 );
 
@@ -76,6 +77,8 @@ CREATE TABLE lists(
 CREATE TABLE list_items(
     list_id INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    isPurchased BOOLEAN NOT NULL DEFAULT FALSE,
     CONSTRAINT PK_list_item PRIMARY KEY (list_id, item_id),
     CONSTRAINT FK_list_item_list FOREIGN KEY (list_id) REFERENCES lists(list_id) ON DELETE CASCADE,
     CONSTRAINT FK_list_item_item FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE

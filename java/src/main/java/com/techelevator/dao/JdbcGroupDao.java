@@ -22,8 +22,8 @@ public class JdbcGroupDao implements GroupDao {
 
     @Override
     public boolean updateGroup(Group group) {
-        String sql = "UPDATE groups SET group_name = ? WHERE group_id =?";
-        return jdbcTemplate.update(sql, group.getGroupName(), group.getGroupId()) > 0;
+        String sql = "UPDATE groups SET group_name = ?, group_key = ? WHERE group_id =?";
+        return jdbcTemplate.update(sql, group.getGroupName(), group.getGroupKey(), group.getGroupId()) > 0;
     }
 
     @Override
