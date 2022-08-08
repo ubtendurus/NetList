@@ -13,18 +13,19 @@ public interface ShoppingListDao {
 
         void deleteList(ShoppingList list);
 
-        ShoppingList getListById(int listId);
+        ShoppingList getListById(Long listId);
 
         ShoppingList getListByName(String listName);
 
         List<ShoppingList> getAllLists();
 
-        List<ShoppingList> getListByOwnerId(long ownerId);
+        List<ShoppingList> getListByOwnerId(Long ownerId);
 
-        List<ShoppingList> getListByRetailerId(long retailerId);
+        List<ShoppingList> getListByRetailerId(Long retailerId);
 
-        ShoppingList getListByGroupId(long groupId);
+        ShoppingList getListByGroupId(Long groupId);
 
+        List<ShoppingList> getListByUserId(Long userId);
 
 
     }

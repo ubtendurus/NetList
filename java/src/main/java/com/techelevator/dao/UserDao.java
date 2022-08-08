@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Group;
 import com.techelevator.model.User;
 
 import java.util.List;
@@ -15,4 +16,8 @@ public interface UserDao {
     int findIdByUsername(String username);
 
     boolean create(String username, String password, String role);
+
+    List<User> getUsersByGroupId(Long groupId);
+
+    List<User> getUsersByListId(Long listId);
 }

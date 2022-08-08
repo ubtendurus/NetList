@@ -12,9 +12,11 @@ public interface GroupDao {
 
     void deleteGroup(Group group);
 
-    Group getGroupById(int groupId);
+    Group getGroupById(Long groupId);
 
     Group getGroupByName(String groupName);
 
     List<Group> getAllGroups();
+
+    List<Group> getGroupsByUserId(Long userId);
 }

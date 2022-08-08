@@ -37,7 +37,7 @@ public class JdbcShoppingListDao implements ShoppingListDao {
 
 
     @Override
-    public ShoppingList getListById(int listId) {
+    public ShoppingList getListById(Long listId) {
         String sql="SELECT * FROM lists WHERE list_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, listId);
         if (results.next()) {
@@ -71,7 +71,7 @@ public class JdbcShoppingListDao implements ShoppingListDao {
     }
 
     @Override
-    public List<ShoppingList> getListByOwnerId(long ownerId) {
+    public List<ShoppingList> getListByOwnerId(Long ownerId) {
         List<ShoppingList> lists = new ArrayList<>();
         String sql = "SELECT * FROM lists WHERE owner_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ownerId);
@@ -82,7 +82,7 @@ public class JdbcShoppingListDao implements ShoppingListDao {
     }
 
     @Override
-    public List<ShoppingList> getListByRetailerId(long retailerId) {
+    public List<ShoppingList> getListByRetailerId(Long retailerId) {
         List<ShoppingList> lists = new ArrayList<>();
         String sql = "SELECT * FROM lists WHERE retailer_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, retailerId);
@@ -93,7 +93,7 @@ public class JdbcShoppingListDao implements ShoppingListDao {
     }
 
     @Override
-    public ShoppingList getListByGroupId(long groupId) {
+    public ShoppingList getListByGroupId(Long groupId) {
         String sql = "SELECT * FROM lists WHERE group_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, groupId);
         if (results.next()) {
@@ -101,6 +101,20 @@ public class JdbcShoppingListDao implements ShoppingListDao {
         } else {
             throw new IllegalArgumentException("No Match Found!");
         }
+    }
+
+    @Override
+    public List<ShoppingList> getListByUserId(Long userId) {
+        List<ShoppingList> shoppingLists = new ArrayList<>();
+        String sql = "SELECT * FROM lists WHERE list_id =  " +
+                "(SELECT list_id FROM user_list WHERE user_id = ?)";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while (results.next()) {
+            ShoppingList shoppingList = mapRowToList(results);
+            shoppingLists.add(shoppingList);
+        }
+        return shoppingLists;
     }
 
     private ShoppingList mapRowToList(SqlRowSet results) {

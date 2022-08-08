@@ -33,7 +33,7 @@ public class JdbcGroupDao implements GroupDao {
     }
 
     @Override
-    public Group getGroupById(int groupId) {
+    public Group getGroupById(Long groupId) {
         String sql = "SELECT * FROM groups WHERE group_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, groupId);
         if (results.next()) {
@@ -60,6 +60,20 @@ public class JdbcGroupDao implements GroupDao {
         String sql = "SELECT * FROM groups";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Group group = mapRowToGroup(results);
+            groups.add(group);
+        }
+        return groups;
+    }
+
+    @Override
+    public List<Group> getGroupsByUserId(Long userId) {
+        List<Group> groups = new ArrayList<>();
+        String sql = "SELECT * FROM groups WHERE group_id = " +
+                "(SELECT group_id FROM group_user WHERE user_id = ?)";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             Group group = mapRowToGroup(results);
             groups.add(group);
