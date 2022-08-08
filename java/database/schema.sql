@@ -7,6 +7,9 @@ DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS retailers;
 DROP TABLE IF EXISTS list_items;
 DROP TABLE IF EXISTS user_list;
+DROP TABLE IF EXISTS group_user;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS category_item;
 
 CREATE TABLE users (
 	user_id SERIAL,
