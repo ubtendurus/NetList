@@ -72,19 +72,34 @@ public class JdbcShoppingListDao implements ShoppingListDao {
 
     @Override
     public List<ShoppingList> getListByOwnerId(long ownerId) {
-        return null;
+        List<ShoppingList> lists = new ArrayList<>();
+        String sql = "SELECT * FROM lists WHERE owner_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ownerId);
+        while (results.next()) {
+            lists.add(mapRowToList(results));
+        }
+        return lists;
     }
 
     @Override
     public List<ShoppingList> getListByRetailerId(long retailerId) {
-        return null;
+        List<ShoppingList> lists = new ArrayList<>();
+        String sql = "SELECT * FROM lists WHERE retailer_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, retailerId);
+        while (results.next()) {
+            lists.add(mapRowToList(results));
+        }
+        return lists;
     }
+
     private ShoppingList mapRowToList(SqlRowSet results) {
         ShoppingList shoppingList = new ShoppingList();
         shoppingList.setListId(results.getLong("list_id"));
-        shoppingList.setListName(results.getString("list_name"));
+        shoppingList.setListName(results.getString("name"));
         shoppingList.setOwnerId(results.getLong("owner_id"));
-        shoppingList.setCreatedAt(results.getDate("created_at").toLocalDate());
+        if(results.getDate("date_created") != null) {
+            shoppingList.setCreatedAt(results.getDate("created_at").toLocalDate());
+        }
         shoppingList.setRetailerId(results.getLong("retailer_id"));
         return shoppingList;
 
