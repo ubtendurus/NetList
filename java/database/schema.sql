@@ -1,6 +1,7 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS retailers;
@@ -16,6 +17,20 @@ CREATE TABLE users (
 	last_name varchar(50) NOT NULL,
 	email varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+
+CREATE TABLE groups (
+    group_id SERIAL,
+    group_name varchar(100) NOT NULL UNIQUE,
+    CONSTRAINT PK_group PRIMARY KEY (group_id)
+);
+
+CREATE TABLE group_user (
+    group_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    CONSTRAINT PK_group_user PRIMARY KEY (group_id, user_id),
+    CONSTRAINT FK_group_user_group FOREIGN KEY (group_id) REFERENCES groups(group_id) ON DELETE CASCADE,
+    CONSTRAINT FK_group_user_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE retailers(
@@ -37,9 +52,11 @@ CREATE TABLE lists(
     name varchar(50) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     retailer_id INTEGER NOT NULL,
+    group_id INTEGER NOT NULL,
     CONSTRAINT PK_list PRIMARY KEY (list_id),
     CONSTRAINT FK_list_user FOREIGN KEY (owner_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    CONSTRAINT FK_list_retailer FOREIGN KEY (retailer_id) REFERENCES retailers(retailer_id) ON DELETE CASCADE
+    CONSTRAINT FK_list_retailer FOREIGN KEY (retailer_id) REFERENCES retailers(retailer_id) ON DELETE CASCADE,
+    CONSTRAINT FK_list_group_id FOREIGN KEY (group_id) REFERENCES groups(group_id) ON DELETE CASCADE
 );
 
 
