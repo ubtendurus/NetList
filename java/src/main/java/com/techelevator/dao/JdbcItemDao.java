@@ -68,11 +68,24 @@ public class JdbcItemDao implements ItemDao {
         return items;
     }
 
+    @Override
+    public List<Item> getAllItemsByCategoryId(Long categoryId) {
+        List<Item> list = new ArrayList<>();
+        String sql = "SELECT * FROM items WHERE category_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, categoryId);
+        while (results.next()) {
+            Item item = mapRowToItem(results);
+            list.add(item);
+        }
+        return list;
+    }
+
     private Item mapRowToItem(SqlRowSet results) {
         Item item = new Item();
         item.setItemId(results.getLong("item_id"));
         item.setItemName(results.getString("item_name"));
         item.setItemDescription(results.getString("item_description"));
+        item.setCategoryId(results.getLong("category_id"));
         return item;
     }
 }

@@ -92,6 +92,17 @@ public class JdbcShoppingListDao implements ShoppingListDao {
         return lists;
     }
 
+    @Override
+    public ShoppingList getListByGroupId(long groupId) {
+        String sql = "SELECT * FROM lists WHERE group_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, groupId);
+        if (results.next()) {
+            return mapRowToList(results);
+        } else {
+            throw new IllegalArgumentException("No Match Found!");
+        }
+    }
+
     private ShoppingList mapRowToList(SqlRowSet results) {
         ShoppingList shoppingList = new ShoppingList();
         shoppingList.setListId(results.getLong("list_id"));
@@ -101,6 +112,7 @@ public class JdbcShoppingListDao implements ShoppingListDao {
             shoppingList.setCreatedAt(results.getDate("created_at").toLocalDate());
         }
         shoppingList.setRetailerId(results.getLong("retailer_id"));
+        shoppingList.setGroupId(results.getLong("group_id"));
         return shoppingList;
 
     }

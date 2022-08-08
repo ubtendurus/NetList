@@ -18,4 +18,6 @@ public interface ItemDao {
 
     List<Item> getAllItems();
 
+    List<Item> getAllItemsByCategoryId(Long categoryId);
+
 }

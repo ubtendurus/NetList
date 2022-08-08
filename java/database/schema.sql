@@ -53,7 +53,10 @@ CREATE TABLE items(
                       item_id SERIAL,
                       name varchar(50) NOT NULL,
                       description varchar(50) NOT NULL,
-                      CONSTRAINT PK_item PRIMARY KEY (item_id)
+                      category_id INTEGER NOT NULL,
+                      CONSTRAINT PK_item PRIMARY KEY (item_id),
+                      CONSTRAINT FK_item_category FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE
+
 );
 
 CREATE TABLE lists(

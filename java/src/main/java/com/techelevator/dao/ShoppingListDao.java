@@ -23,6 +23,8 @@ public interface ShoppingListDao {
 
         List<ShoppingList> getListByRetailerId(long retailerId);
 
+        ShoppingList getListByGroupId(long groupId);
+
 
 
     }

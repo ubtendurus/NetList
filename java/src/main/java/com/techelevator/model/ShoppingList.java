@@ -1,65 +1,27 @@
 package com.techelevator.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
-
+@Data
+@NoArgsConstructor
 public class ShoppingList {
     private Long listId;
 private String listName;
 private Long ownerId;
 private LocalDate createdAt;
 private Long retailerId;
+private Long groupId;
 
-public ShoppingList(){
-
-}
-
-
-    public ShoppingList(Long listId, String listName, Long ownerId, LocalDate createdAt, Long retailerId) {
+    public ShoppingList(Long listId, String listName, Long ownerId, LocalDate createdAt, Long retailerId,Long groupId) {
         this.listId = listId;
         this.listName = listName;
         this.ownerId = ownerId;
         this.createdAt = createdAt;
         this.retailerId = retailerId;
+        this.groupId = groupId;
     }
 
-    public Long getListId() {
-        return listId;
-    }
-
-    public void setListId(Long listId) {
-        this.listId = listId;
-    }
-
-    public String getListName() {
-        return listName;
-    }
-
-    public void setListName(String listName) {
-        this.listName = listName;
-    }
-
-    public Long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(Long ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public LocalDate getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDate createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Long getRetailerId() {
-        return retailerId;
-    }
-
-    public void setRetailerId(Long retailerId) {
-        this.retailerId = retailerId;
-    }
 }

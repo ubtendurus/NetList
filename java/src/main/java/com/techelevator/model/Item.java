@@ -1,41 +1,22 @@
 package com.techelevator.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class Item {
     private Long itemId;
     private String itemName;
     private String itemDescription;
+    private Long categoryId;
 
-    public Item(){
 
-    }
-
-    public Item(Long itemId, String itemName, String itemDescription) {
+    public Item(Long itemId, String itemName, String itemDescription, Long categoryId) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
+        this.categoryId = categoryId;
     }
 
-    public Long getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public String getItemDescription() {
-        return itemDescription;
-    }
-
-    public void setItemDescription(String itemDescription) {
-        this.itemDescription = itemDescription;
-    }
 }
