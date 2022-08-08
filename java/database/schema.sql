@@ -1,6 +1,11 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS items;
+DROP TABLE IF EXISTS lists;
+DROP TABLE IF EXISTS retailers;
+DROP TABLE IF EXISTS list_items;
+DROP TABLE IF EXISTS user_list;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -11,6 +16,19 @@ CREATE TABLE users (
 	last_name varchar(50) NOT NULL,
 	email varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+
+CREATE TABLE retailers(
+                          retailer_id SERIAL,
+                          name varchar(50) NOT NULL,
+                          CONSTRAINT PK_retailer PRIMARY KEY (retailer_id)
+);
+
+CREATE TABLE items(
+                      item_id SERIAL,
+                      name varchar(50) NOT NULL,
+                      description varchar(50) NOT NULL,
+                      CONSTRAINT PK_item PRIMARY KEY (item_id)
 );
 
 CREATE TABLE lists(
@@ -24,18 +42,6 @@ CREATE TABLE lists(
     CONSTRAINT FK_list_retailer FOREIGN KEY (retailer_id) REFERENCES retailers(retailer_id) ON DELETE CASCADE
 );
 
-CREATE TABLE items(
-    item_id SERIAL,
-    name varchar(50) NOT NULL,
-    description varchar(50) NOT NULL,
-    CONSTRAINT PK_item PRIMARY KEY (item_id),
-);
-
-CREATE TABLE retailers(
-    retailer_id SERIAL,
-    name varchar(50) NOT NULL,
-    CONSTRAINT PK_retailer PRIMARY KEY (retailer_id)
-);
 
 CREATE TABLE list_items(
     list_id INTEGER NOT NULL,
