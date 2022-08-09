@@ -12,17 +12,17 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">E-mail Address: </label>
       <input
-        type="text"
+        type="email"
         id="username"
         class="form-control"
-        placeholder="Username"
+        placeholder="E-mail Address"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
         id="password"

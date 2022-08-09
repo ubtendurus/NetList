@@ -5,23 +5,24 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">E-mail Address: </label>
       <input
-        type="text"
+        type="email"
         id="username"
         class="form-control"
-        placeholder="Username"
+        placeholder="E-mail Address"
         v-model="user.username"
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
         id="password"
         class="form-control"
         placeholder="Password"
         v-model="user.password"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         required
       />
       <input
@@ -30,6 +31,7 @@
         class="form-control"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
         required
       />
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
@@ -37,6 +39,13 @@
         Create Account
       </button>
     </form>
+    <div id="message">
+      <h3>Password must contain the following:</h3>
+      <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+      <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+      <p id="number" class="invalid">A <b>number</b></p>
+      <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
   </div>
 </template>
 
@@ -77,7 +86,7 @@ export default {
             const response = error.response;
             this.registrationErrors = true;
             if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+              this.registrationErrorMsg = 'Bad Request: That e-mail address is already in use.';
             }
           });
       }
@@ -86,8 +95,11 @@ export default {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
-  },
+  }
 };
+
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
