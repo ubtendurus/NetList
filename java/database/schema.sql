@@ -25,7 +25,7 @@ CREATE TABLE users (
 CREATE TABLE groups (
     group_id SERIAL,
     group_name varchar(100) NOT NULL UNIQUE,
-    group_key varchar(8) NOT NULL UNIQUE,
+    group_key varchar(8),
     CONSTRAINT PK_group PRIMARY KEY (group_id)
 );
 
