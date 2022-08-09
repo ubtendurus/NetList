@@ -157,7 +157,7 @@
                   w-full
                 "
               >
-                Create my account
+                Sign in to my account
               </button>
             </div>
           </form>
