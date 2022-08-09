@@ -62,11 +62,11 @@ CREATE TABLE items(
 
 CREATE TABLE lists(
     list_id SERIAL,
-    owner_id INTEGER NOT NULL,
+    owner_id INTEGER,
     name varchar(50) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    retailer_id INTEGER NOT NULL DEFAULT 0,
-    group_id INTEGER NOT NULL DEFAULT 0,
+    retailer_id INTEGER,
+    group_id INTEGER,
     CONSTRAINT PK_list PRIMARY KEY (list_id),
     CONSTRAINT FK_list_user FOREIGN KEY (owner_id) REFERENCES users(user_id) ON DELETE CASCADE,
     CONSTRAINT FK_list_retailer FOREIGN KEY (retailer_id) REFERENCES retailers(retailer_id) ON DELETE CASCADE,

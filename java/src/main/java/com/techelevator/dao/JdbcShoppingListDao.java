@@ -21,8 +21,14 @@ public class JdbcShoppingListDao implements ShoppingListDao {
 
     @Override
     public boolean createList(ShoppingList shoppingList) {
-        String sql="INSERT INTO lists (name,owner_id) VALUES (?,?)";
-        return jdbcTemplate.update(sql, shoppingList.getListName(), shoppingList.getOwnerId()) > 0;
+        //UserDao userDao = new JdbcUserDao(jdbcTemplate);
+        //Get owner id by user Id
+
+        //int ownerId = userDao.findIdByUsername("user1");
+        //TODO get owner ID of the current creator
+
+        String sql="INSERT INTO lists (name) VALUES (?)";
+        return jdbcTemplate.update(sql, shoppingList.getListName()) > 0;
     }
 
     @Override
@@ -124,7 +130,7 @@ public class JdbcShoppingListDao implements ShoppingListDao {
         shoppingList.setListId(results.getLong("list_id"));
         shoppingList.setListName(results.getString("name"));
         shoppingList.setOwnerId(results.getLong("owner_id"));
-        if(results.getDate("date_created") != null) {
+        if(results.getDate("created_at") != null) {
             shoppingList.setCreatedAt(results.getDate("created_at").toLocalDate());
         }
         shoppingList.setRetailerId(results.getLong("retailer_id"));
