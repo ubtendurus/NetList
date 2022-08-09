@@ -78,6 +78,7 @@ CREATE TABLE list_items(
     list_id INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
+    item_note varchar(50) NOT NULL,
     isPurchased BOOLEAN NOT NULL DEFAULT FALSE,
     CONSTRAINT PK_list_item PRIMARY KEY (list_id, item_id),
     CONSTRAINT FK_list_item_list FOREIGN KEY (list_id) REFERENCES lists(list_id) ON DELETE CASCADE,

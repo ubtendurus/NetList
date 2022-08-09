@@ -12,11 +12,13 @@ public class Item {
     private Long categoryId;
 
 
+
     public Item(Long itemId, String itemName, String itemDescription, Long categoryId) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.categoryId = categoryId;
     }
+
 
 }
