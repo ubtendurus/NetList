@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS items;
 DROP TABLE IF EXISTS lists;
 DROP TABLE IF EXISTS retailers;
-DROP TABLE IF EXISTS list_items;
+DROP TABLE IF EXISTS items_in_lists;
 DROP TABLE IF EXISTS user_list;
 DROP TABLE IF EXISTS group_user;
 DROP TABLE IF EXISTS category;
@@ -65,8 +65,8 @@ CREATE TABLE lists(
     owner_id INTEGER NOT NULL,
     name varchar(50) NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
-    retailer_id INTEGER NOT NULL,
-    group_id INTEGER NOT NULL,
+    retailer_id INTEGER NOT NULL DEFAULT 0,
+    group_id INTEGER NOT NULL DEFAULT 0,
     CONSTRAINT PK_list PRIMARY KEY (list_id),
     CONSTRAINT FK_list_user FOREIGN KEY (owner_id) REFERENCES users(user_id) ON DELETE CASCADE,
     CONSTRAINT FK_list_retailer FOREIGN KEY (retailer_id) REFERENCES retailers(retailer_id) ON DELETE CASCADE,
@@ -74,13 +74,14 @@ CREATE TABLE lists(
 );
 
 
-CREATE TABLE list_items(
+CREATE TABLE items_in_lists(
+    item_in_lists_id SERIAL,
     list_id INTEGER NOT NULL,
     item_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
     item_note varchar(50) NOT NULL,
-    isPurchased BOOLEAN NOT NULL DEFAULT FALSE,
-    CONSTRAINT PK_list_item PRIMARY KEY (list_id, item_id),
+    is_purchased BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT PK_item_in_lists PRIMARY KEY (item_in_lists_id),
     CONSTRAINT FK_list_item_list FOREIGN KEY (list_id) REFERENCES lists(list_id) ON DELETE CASCADE,
     CONSTRAINT FK_list_item_item FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
 );

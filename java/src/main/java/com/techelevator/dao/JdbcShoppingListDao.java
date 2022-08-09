@@ -5,10 +5,12 @@ import com.techelevator.model.Retailer;
 import com.techelevator.model.ShoppingList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcShoppingListDao implements ShoppingListDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -19,20 +21,20 @@ public class JdbcShoppingListDao implements ShoppingListDao {
 
     @Override
     public boolean createList(ShoppingList shoppingList) {
-        String sql="INSERT INTO lists (name) VALUES (?)";
-        return jdbcTemplate.update(sql, shoppingList.getListName()) > 0;
+        String sql="INSERT INTO lists (name,owner_id) VALUES (?,?)";
+        return jdbcTemplate.update(sql, shoppingList.getListName(), shoppingList.getOwnerId()) > 0;
     }
 
     @Override
-    public boolean updateList(ShoppingList shoppingList) {
+    public boolean updateList(Long listId,ShoppingList shoppingList) {
         String sql="UPDATE lists SET name = ? WHERE list_id = ?";
-        return jdbcTemplate.update(sql, shoppingList.getListName(), shoppingList.getListId()) > 0;
+        return jdbcTemplate.update(sql, shoppingList.getListName(), listId) > 0;
     }
 
     @Override
-    public void deleteList(ShoppingList shoppingList) {
+    public void deleteList(Long listId) {
         String sql="DELETE FROM lists WHERE list_id = ?";
-        jdbcTemplate.update(sql, shoppingList.getListId());
+        jdbcTemplate.update(sql, listId);
     }
 
 

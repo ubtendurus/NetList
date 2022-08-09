@@ -9,9 +9,9 @@ public interface ShoppingListDao {
 
         boolean createList(ShoppingList list);
 
-        boolean updateList(ShoppingList list);
+        boolean updateList(Long listId,ShoppingList list);
 
-        void deleteList(ShoppingList list);
+        void deleteList(Long listId);
 
         ShoppingList getListById(Long listId);
 

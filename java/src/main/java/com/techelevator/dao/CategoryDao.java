@@ -10,4 +10,8 @@ public interface CategoryDao {
     Category getCategoryByName(String categoryName);
 
     Category getCategoryByItem(long itemId);
+
+    boolean createCategory(Category category);
+    boolean updateCategory(Category category);
+    void deleteCategory(Category category);
 }

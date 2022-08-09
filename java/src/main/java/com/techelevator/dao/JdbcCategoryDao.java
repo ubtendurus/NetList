@@ -59,6 +59,24 @@ public class JdbcCategoryDao implements CategoryDao{
         }
     }
 
+    @Override
+    public boolean createCategory(Category category) {
+        String sql = "INSERT INTO categories (category_name) VALUES (?)";
+        return jdbcTemplate.update(sql, category.getCategoryName()) > 0;
+    }
+
+    @Override
+    public boolean updateCategory(Category category) {
+        String sql = "UPDATE categories SET category_name = ? WHERE category_id = ?";
+        return jdbcTemplate.update(sql, category.getCategoryName(), category.getCategoryId()) > 0;
+    }
+
+    @Override
+    public void deleteCategory(Category category) {
+        String sql = "DELETE FROM categories WHERE category_id = ?";
+        jdbcTemplate.update(sql, category.getCategoryId());
+    }
+
 
     private Category mapRowToCategory(SqlRowSet row) {
         Category category = new Category();

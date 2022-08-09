@@ -33,6 +33,7 @@ public class JdbcItemInListDao implements ItemInListDao{
     public void deleteItemInList(ItemInList itemInList) {
         String sql="DELETE FROM items_in_lists WHERE item_in_list_id = ?";
         jdbcTemplate.update(sql, itemInList.getItemInListId());
+        //TODO database add cascade to delete items in list when list is deleted
     }
 
     @Override

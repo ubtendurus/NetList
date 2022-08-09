@@ -3,10 +3,12 @@ package com.techelevator.dao;
 import com.techelevator.model.Group;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcGroupDao implements GroupDao {
     private final JdbcTemplate jdbcTemplate;
 
@@ -27,9 +29,9 @@ public class JdbcGroupDao implements GroupDao {
     }
 
     @Override
-    public void deleteGroup(Group group) {
+    public void deleteGroup(Long groupId) {
         String sql = "DELETE FROM groups WHERE group_id = ?";
-        jdbcTemplate.update(sql, group.getGroupId());
+        jdbcTemplate.update(sql, groupId);
     }
 
     @Override

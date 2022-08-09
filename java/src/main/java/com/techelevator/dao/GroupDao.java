@@ -10,7 +10,7 @@ public interface GroupDao {
 
     boolean updateGroup(Group group);
 
-    void deleteGroup(Group group);
+    void deleteGroup(Long groupId);
 
     Group getGroupById(Long groupId);
 
