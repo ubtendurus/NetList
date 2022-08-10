@@ -27,8 +27,8 @@ public class ShoppingListController {
     }
 
     @GetMapping("/shoppinglists")
-    public List<ShoppingList> getAllLists() {
-        return shoppingListDao.getAllLists();
+    public List<ShoppingList> getAllLists(Principal principal) {
+        return shoppingListDao.getAllLists(principal);
     }
 
     @PutMapping("/shoppinglists/{listId}")

@@ -107,7 +107,6 @@ export default {
       this.groups = response.data;
     });
   },
-  mounted() {},
 };
 </script>
 

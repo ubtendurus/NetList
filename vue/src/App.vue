@@ -89,7 +89,7 @@
             "
           >
             <router-link
-              v-bind:to="{ name: 'lists' }"
+              v-bind:to="{ name: 'shopping-lists' }"
               v-if="$store.state.token != ''"
             >
               Lists

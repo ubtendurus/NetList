@@ -18,7 +18,7 @@ public interface ShoppingListDao {
 
         ShoppingList getListByName(String listName);
 
-        List<ShoppingList> getAllLists();
+        List<ShoppingList> getAllLists(Principal principal);
 
         List<ShoppingList> getListByOwnerId(Long ownerId);
 

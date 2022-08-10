@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Groups from '../views/Groups.vue'
+import ShoppingList from '../views/ShoppingList.vue'
 
 Vue.use(Router)
 
@@ -59,6 +60,14 @@ const router = new Router({
       name: "groups",
       component: Groups,
       meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/shoppinglists",
+      name: "shopping-lists",
+      component: ShoppingList,
+      meta : {
         requiresAuth: true
       }
     }

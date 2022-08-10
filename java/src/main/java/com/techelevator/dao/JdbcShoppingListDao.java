@@ -73,10 +73,12 @@ public class JdbcShoppingListDao implements ShoppingListDao {
 
 
     @Override
-    public List<ShoppingList> getAllLists() {
+    public List<ShoppingList> getAllLists(Principal principal) {
         List<ShoppingList> lists = new ArrayList<>();
-        String sql = "SELECT * FROM lists";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        UserDao currentUser = new JdbcUserDao(jdbcTemplate);
+        Long ownerId = (long)currentUser.findIdByUsername(principal.getName());
+        String sql = "SELECT * FROM lists WHERE owner_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ownerId);
         while (results.next()) {
             lists.add(mapRowToList(results));
         }
