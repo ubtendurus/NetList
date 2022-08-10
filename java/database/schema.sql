@@ -37,9 +37,10 @@ CREATE TABLE category (
 
 
 CREATE TABLE group_user (
+    group_user_id SERIAL,
     group_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
-    CONSTRAINT PK_group_user PRIMARY KEY (group_id, user_id),
+    CONSTRAINT PK_group_user PRIMARY KEY (group_user_id),
     CONSTRAINT FK_group_user_group FOREIGN KEY (group_id) REFERENCES groups(group_id) ON DELETE CASCADE,
     CONSTRAINT FK_group_user_user FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );

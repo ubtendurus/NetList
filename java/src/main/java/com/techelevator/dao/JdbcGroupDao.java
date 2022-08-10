@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +19,22 @@ public class JdbcGroupDao implements GroupDao {
     }
 
     @Override
-    public boolean createGroup(Group group) {
-        String sql = "INSERT INTO groups (group_name) VALUES (?)";
-        return jdbcTemplate.update(sql, group.getGroupName()) > 0;
+    public boolean createGroup(Group group, Principal principal) {
+        UserDao userDao = new JdbcUserDao(jdbcTemplate);
+        String ownerName = principal.getName();
+        Long ownerId = (long) userDao.findIdByUsername(ownerName);
+
+        //System.out.println(getGroupByName(group.getGroupName()));
+
+
+        String sql = "INSERT INTO groups (group_name) VALUES (?); ";
+
+        jdbcTemplate.update(sql, group.getGroupName());
+
+        Long groupId = getGroupByName(group.getGroupName()).getGroupId();
+
+        String sql2 = "INSERT INTO group_user (group_id, user_id) VALUES (?,?);";
+        return jdbcTemplate.update(sql2, groupId, ownerId) > 0;
     }
 
     @Override
@@ -57,11 +72,16 @@ public class JdbcGroupDao implements GroupDao {
     }
 
     @Override
-    public List<Group> getAllGroups() {
+    public List<Group> getAllGroups(Principal principal) {
         List<Group> groups = new ArrayList<>();
-        String sql = "SELECT * FROM groups";
+        String userName = principal.getName();
+        UserDao userDao = new JdbcUserDao(jdbcTemplate);
+        Long userId = (long) userDao.findIdByUsername(userName);
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+
+        String sql = "SELECT * FROM groups WHERE group_id IN (SELECT group_id FROM group_user WHERE user_id = ?)";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             Group group = mapRowToGroup(results);
             groups.add(group);

@@ -19,6 +19,7 @@ private Long retailerId;
 private Long groupId;
 
 
+
     public ShoppingList(Long listId, String listName, Long ownerId, LocalDate createdAt, Long retailerId,Long groupId) {
         this.listName = listName;
         this.ownerId = ownerId;

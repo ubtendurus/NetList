@@ -1,16 +1,80 @@
 <template>
-  <div>
-    <form id="createGroupForm" @submit.prevent="createGroup()">
-      <label for="groupName">Group Name: </label>
-      <input
-        type="text"
-        id="groupName"
-        placeholder="Group Name"
-        v-model="groups.groupName"
-        required
-        autofocus
-      />
-      <button type="submit">Create Group</button>
+  <div class="flex items-center justify-center py-8 mr-auto ml-auto">
+    <form id="createGroupForm" @submit.self="createGroup()">
+      <div class="flex flex-col md:mr-16">
+        <label
+          for="groupName"
+          class="
+            text-gray-800
+            dark:text-gray-100
+            text-sm
+            font-bold
+            leading-tight
+            tracking-normal
+            mb-2
+          "
+          >Group Name</label
+        >
+        <input
+          id="groupName"
+          class="
+            text-gray-600
+            dark:text-gray-400
+            focus:outline-none focus:border focus:border-indigo-700
+            dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
+            bg-white
+            font-normal
+            w-64
+            h-10
+            flex
+            items-center
+            pl-3
+            text-sm
+            border-gray-300
+            rounded
+            border
+            shadow
+          "
+          v-model="groups.groupName"
+          required
+          autofocus
+          placeholder="Group Name"
+        />
+
+        <button
+          type="submit"
+          class="
+            mt-8
+            ml-auto
+            mr-auto
+            focus:outline-none
+            focus:ring-2
+            focus:ring-indigo-700
+            focus:bg-indigo-50
+            flex
+            cursor-pointer
+            items-center
+            justify-center
+            px-3
+            py-2.5
+            border
+            rounded
+            border-gray-100
+          "
+        >
+          <p
+            class="
+              focus:outline-none
+              text-xs
+              md:text-sm
+              leading-none
+              text-gray-600
+            "
+          >
+            Create Group
+          </p>
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -31,7 +95,7 @@ export default {
     createGroup() {
       groupsService.create(this.groups).then((response) => {
         if (response.status === 201) {
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "groups" });
         }
         this.groups = response.data;
       });

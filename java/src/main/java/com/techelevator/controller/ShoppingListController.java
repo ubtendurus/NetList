@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -38,8 +39,8 @@ public class ShoppingListController {
 
     @PostMapping("/shoppinglists")
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean createList(@RequestBody ShoppingList shoppingList) {
-        return shoppingListDao.createList(shoppingList);
+    public boolean createList(@RequestBody ShoppingList shoppingList,Principal principal) {
+        return shoppingListDao.createList(shoppingList,principal);
     }
 
     @DeleteMapping("/shoppinglists/{listId}")

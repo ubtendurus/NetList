@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.annotation.HttpConstraint;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -28,8 +29,8 @@ public class GroupController {
     }
 
     @GetMapping("/groups")
-    public List<Group> getAllGroups() {
-        return groupDao.getAllGroups();
+    public List<Group> getAllGroups(Principal principal) {
+        return groupDao.getAllGroups(principal);
     }
 
     @GetMapping("/groups/{groupId}")
@@ -39,8 +40,8 @@ public class GroupController {
 
     @PostMapping("/groups")
     @ResponseStatus(HttpStatus.CREATED)
-    public boolean createGroup(@RequestBody Group group) {
-        return groupDao.createGroup(group);
+    public boolean createGroup(@RequestBody Group group, Principal principal) {
+        return groupDao.createGroup(group,principal);
     }
 
     @PutMapping("/groups/{groupId}")

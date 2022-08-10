@@ -1,6 +1,9 @@
 package com.techelevator.model;
 
+
+
 public class Group {
+
     private Long groupId;
     private String groupName;
     private String groupKey;

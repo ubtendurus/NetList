@@ -2,11 +2,12 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Group;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface GroupDao {
 
-    boolean createGroup(Group group);
+    boolean createGroup(Group group, Principal principal);
 
     boolean updateGroup(Group group);
 
@@ -16,7 +17,7 @@ public interface GroupDao {
 
     Group getGroupByName(String groupName);
 
-    List<Group> getAllGroups();
+    List<Group> getAllGroups(Principal principal);
 
     List<Group> getGroupsByUserId(Long userId);
 

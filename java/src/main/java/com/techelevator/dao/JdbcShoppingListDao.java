@@ -7,11 +7,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class JdbcShoppingListDao implements ShoppingListDao {
+
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -20,15 +22,18 @@ public class JdbcShoppingListDao implements ShoppingListDao {
     }
 
     @Override
-    public boolean createList(ShoppingList shoppingList) {
-        //UserDao userDao = new JdbcUserDao(jdbcTemplate);
+    public boolean createList(ShoppingList shoppingList,Principal principal) {
+        UserDao userDao = new JdbcUserDao(jdbcTemplate);
+        String ownerName = principal.getName();
+        int ownerId = userDao.findIdByUsername(ownerName);
+        shoppingList.setOwnerId((long)ownerId);
         //Get owner id by user Id
 
         //int ownerId = userDao.findIdByUsername("user1");
         //TODO get owner ID of the current creator
 
-        String sql="INSERT INTO lists (name) VALUES (?)";
-        return jdbcTemplate.update(sql, shoppingList.getListName()) > 0;
+        String sql="INSERT INTO lists (name, owner_id) VALUES (?,?)";
+        return jdbcTemplate.update(sql, shoppingList.getListName(), shoppingList.getOwnerId()) > 0;
     }
 
     @Override
