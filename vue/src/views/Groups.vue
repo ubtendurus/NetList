@@ -1,26 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8">
     <div class="groups">
-      <!-- <button
-      @click="showAddGroupForm = !showAddGroupForm"
-      class="
-        mx-2
-        my-2
-        bg-white
-        transition
-        duration-150
-        ease-in-out
-        focus:outline-none
-        rounded
-        text-gray-800
-        border border-gray-300
-        px-6
-        py-2
-        text-sm
-      "
-    >
-      Add Group
-    </button> -->
       <div
         class="
           flex

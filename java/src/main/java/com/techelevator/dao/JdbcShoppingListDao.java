@@ -32,8 +32,8 @@ public class JdbcShoppingListDao implements ShoppingListDao {
         //int ownerId = userDao.findIdByUsername("user1");
         //TODO get owner ID of the current creator
 
-        String sql="INSERT INTO lists (name, owner_id) VALUES (?,?)";
-        return jdbcTemplate.update(sql, shoppingList.getListName(), shoppingList.getOwnerId()) > 0;
+        String sql="INSERT INTO lists (name, owner_id ,group_id) VALUES (?,?,?)";
+        return jdbcTemplate.update(sql, shoppingList.getListName(), shoppingList.getOwnerId(), shoppingList.getGroupId()) > 0;
     }
 
     @Override
@@ -75,10 +75,10 @@ public class JdbcShoppingListDao implements ShoppingListDao {
     @Override
     public List<ShoppingList> getAllLists(Principal principal) {
         List<ShoppingList> lists = new ArrayList<>();
-        UserDao currentUser = new JdbcUserDao(jdbcTemplate);
-        Long ownerId = (long)currentUser.findIdByUsername(principal.getName());
-        String sql = "SELECT * FROM lists WHERE owner_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, ownerId);
+        //UserDao currentUser = new JdbcUserDao(jdbcTemplate);
+        //Long ownerId = (long)currentUser.findIdByUsername(principal.getName());
+        String sql = "SELECT * FROM lists";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             lists.add(mapRowToList(results));
         }

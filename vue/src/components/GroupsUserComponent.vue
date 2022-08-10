@@ -1,8 +1,10 @@
 <template>
   <body class="flex items-center justify-center py-8">
     <div class="w-full max-w-2xl px-4">
-      <div class="border rounded-lg border pb-6 border-gray-200">
-
+      <div
+        class="border rounded-lg border pb-6 border-gray-200"
+        v-if="groups.length != 0"
+      >
         <div class="px-6 pt-6 overflow-x-auto">
           <table class="w-full whitespace-nowrap">
             <tbody v-for="group in groups" class="group" v-bind:key="group.id">
@@ -105,6 +107,15 @@ export default {
   created() {
     groupsService.getAll().then((response) => {
       this.groups = response.data;
+      this.groups.sort(function (a, b) {
+        if (a.groupName.toLowerCase() < b.groupName.toLowerCase()) {
+          return -1;
+        }
+        if (a.groupName.toLowerCase() > b.groupName.toLowerCase()) {
+          return 1;
+        }
+        return 0;
+      });
     });
   },
 };
