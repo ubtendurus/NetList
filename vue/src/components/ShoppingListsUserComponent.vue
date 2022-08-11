@@ -75,7 +75,7 @@
                             {{ list.listName }}
                           </p>
                           <p class="text-indigo-700 ml-3">
-                            (Group Key will be here)
+                            (Anything can come here)
                           </p>
                         </div>
                         <p

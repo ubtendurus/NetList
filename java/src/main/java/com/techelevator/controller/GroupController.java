@@ -44,6 +44,12 @@ public class GroupController {
         return groupDao.createGroup(group,principal);
     }
 
+    @PostMapping("/groups/join/{groupKey}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public boolean joinGroup(@PathVariable String groupKey, Principal principal) {
+        return groupDao.joinGroup(groupKey,principal);
+    }
+
     @PutMapping("/groups/{groupId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public boolean updateGroup(@PathVariable Long groupId, @RequestBody Group group) {
@@ -52,8 +58,8 @@ public class GroupController {
 
     @DeleteMapping("/groups/{groupId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteGroup(@PathVariable Long groupId) {
-        groupDao.deleteGroup(groupId);
+    public void deleteGroup(@PathVariable Long groupId,Principal principal) {
+        groupDao.deleteGroup(groupId,principal);
     }
 
 }

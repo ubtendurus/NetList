@@ -1,44 +1,25 @@
 package com.techelevator.model;
 
 
+import lombok.Data;
 
+@Data
 public class Group {
 
     private Long groupId;
     private String groupName;
     private String groupKey;
+    private Long ownerId;
 
     public Group() {
 
     }
 
-    public Group(Long groupId, String groupName, String groupKey) {
+    public Group(Long groupId, String groupName, String groupKey, Long ownerId) {
         this.groupId = groupId;
         this.groupName = groupName;
         this.groupKey = groupKey;
+        this.ownerId = ownerId;
     }
 
-    public Long getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Long groupId) {
-        this.groupId = groupId;
-    }
-
-    public String getGroupName() {
-        return groupName;
-    }
-
-    public void setGroupName(String groupName) {
-        this.groupName = groupName;
-    }
-
-    public String getGroupKey() {
-        return groupKey;
-    }
-
-    public void setGroupKey(String groupKey) {
-        this.groupKey = groupKey;
-    }
 }

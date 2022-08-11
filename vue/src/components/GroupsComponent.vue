@@ -40,6 +40,46 @@
           autofocus
           placeholder="Group Name"
         />
+        <br />
+        <label
+          for="groupKey"
+          class="
+            text-gray-800
+            dark:text-gray-100
+            text-sm
+            font-bold
+            leading-tight
+            tracking-normal
+            mb-2
+          "
+          >Group Key</label
+        >
+        <input
+          id="groupKey"
+          class="
+            text-gray-600
+            dark:text-gray-400
+            focus:outline-none focus:border focus:border-indigo-700
+            dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
+            bg-white
+            font-normal
+            w-64
+            h-10
+            flex
+            items-center
+            pl-3
+            text-sm
+            border-gray-300
+            rounded
+            border
+            shadow
+          "
+          v-model="groups.groupKey"
+          required
+          autofocus
+          placeholder="Group Key"
+          disabled
+        />
 
         <button
           type="submit"
@@ -86,10 +126,26 @@ export default {
   name: "groups-component",
   data() {
     return {
+      characters:
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
       groups: {
         groupName: "",
+        groupKey: "",
       },
     };
+  },
+  computed: {
+    //generate random group key
+    generateGroupKey() {
+      var result = "";
+      var charactersLength = this.characters.length;
+      for (var i = 0; i < 8; i++) {
+        result += this.characters.charAt(
+          Math.floor(Math.random() * charactersLength)
+        );
+      }
+      return result;
+    },
   },
   methods: {
     createGroup() {
@@ -100,6 +156,9 @@ export default {
         this.groups = response.data;
       });
     },
+  },
+  created() {
+    this.groups.groupKey = this.generateGroupKey;
   },
 };
 </script>

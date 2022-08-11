@@ -11,7 +11,9 @@ public interface GroupDao {
 
     boolean updateGroup(Group group);
 
-    void deleteGroup(Long groupId);
+    void deleteGroup(Long groupId,Principal principal);
+
+    boolean joinGroup(String groupKey,Principal principal);
 
     Group getGroupById(Long groupId);
 

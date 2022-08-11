@@ -8,5 +8,13 @@ export default {
     getAll() {
         const url = "/groups";
         return axios.get(url);
+    },
+    deleteGroup(id) {
+        const url = "/groups/" + id;
+        return axios.delete(url);
+    },
+    joinGroup(key) {
+        const url = "/groups/join/" + key;
+        return axios.post(url);
     }
 }

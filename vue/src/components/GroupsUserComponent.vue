@@ -24,7 +24,7 @@
                           {{ group.groupName }}
                         </p>
                         <p class="text-indigo-700 ml-3">
-                          (Group Key will be here)
+                          {{ group.groupKey }}
                         </p>
                       </div>
                       <p
@@ -81,7 +81,12 @@
                         rounded-full
                       "
                     >
-                      <p class="text-xs leading-3 text-red-700">Delete</p>
+                      <p
+                        class="text-xs leading-3 text-red-700 cursor-pointer"
+                        @click.self="deleteGroup(group.groupId)"
+                      >
+                        Delete
+                      </p>
                     </div>
                   </div>
                 </td>
@@ -100,10 +105,23 @@ export default {
   name: "groups-user",
   data() {
     return {
-      groups: [],
+      groups: {
+        groupName: "",
+        groupKey: "",
+      },
     };
   },
-  methods: {},
+  methods: {
+    deleteGroup(groupId) {
+      groupsService.deleteGroup(groupId).then((response) => {
+        if (response.status === 204) {
+          this.$router.go(this.$router.currentRoute);
+        } else {
+          alert("Error deleting group");
+        }
+      });
+    },
+  },
   created() {
     groupsService.getAll().then((response) => {
       this.groups = response.data;

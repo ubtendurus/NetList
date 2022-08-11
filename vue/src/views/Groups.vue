@@ -25,7 +25,10 @@
           Groups
         </p>
         <button
-          @click="showAddGroupForm = !showAddGroupForm"
+          @click="
+            showAddGroupForm = !showAddGroupForm;
+            showJoinGroupForm = false;
+          "
           class="
             focus:outline-none
             focus:ring-2
@@ -51,9 +54,128 @@
               text-gray-600
             "
           >
-            Add Group
+            Create Group
           </p>
         </button>
+        <button
+          @click="
+            showJoinGroupForm = !showJoinGroupForm;
+            showAddGroupForm = false;
+          "
+          class="
+            focus:outline-none
+            focus:ring-2
+            focus:ring-indigo-700
+            focus:bg-indigo-50
+            flex
+            cursor-pointer
+            items-center
+            justify-center
+            px-3
+            py-2.5
+            border
+            rounded
+            border-gray-100
+          "
+        >
+          <p
+            class="
+              focus:outline-none
+              text-xs
+              md:text-sm
+              leading-none
+              text-gray-600
+            "
+          >
+            Join Group
+          </p>
+        </button>
+      </div>
+      <div
+        v-if="showJoinGroupForm"
+        class="
+          flex
+          items-center
+          border-b border-gray-200
+          justify-between
+          px-6
+          py-3
+        "
+      >
+        <form id="joinGroupForm" @submit.prevent="joinGroup()">
+          <!-- <label
+          for="groupKey"
+          class="
+            text-gray-800
+            dark:text-gray-100
+            text-sm
+            font-bold
+            leading-tight
+            tracking-normal
+            mb-2
+          "
+        >
+          Group Key</label
+        > -->
+          <input
+            id="groupKey"
+            class="
+              text-gray-600
+              dark:text-gray-400
+              focus:outline-none focus:border focus:border-indigo-700
+              dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
+              bg-white
+              font-normal
+              w-64
+              h-10
+              flex
+              items-center
+              pl-3
+              text-sm
+              border-gray-300
+              rounded
+              border
+              shadow
+            "
+            v-model="groups.groupKey"
+            required
+            autofocus
+            placeholder="Group Key"
+          />
+
+          <button
+            type="submit"
+            class="
+              ml-auto
+              mr-auto
+              focus:outline-none
+              focus:ring-2
+              focus:ring-indigo-700
+              focus:bg-indigo-50
+              flex
+              cursor-pointer
+              items-center
+              justify-center
+              px-3
+              py-2.5
+              border
+              rounded
+              border-gray-100
+            "
+          >
+            <p
+              class="
+                focus:outline-none
+                text-xs
+                md:text-sm
+                leading-none
+                text-gray-600
+              "
+            >
+              Join Group
+            </p>
+          </button>
+        </form>
       </div>
       <div
         v-if="showAddGroupForm"
@@ -84,6 +206,7 @@ export default {
   data() {
     return {
       showAddGroupForm: false,
+      showJoinGroupForm: false,
       groups: [],
     };
   },
@@ -95,6 +218,16 @@ export default {
     groupsService.getAll().then((response) => {
       this.groups = response.data;
     });
+  },
+  methods: {
+    joinGroup() {
+      groupsService.joinGroup(this.groups.groupKey).then((response) => {
+        if (response.status === 202) {
+          this.$router.push({ name: "groups" });
+        }
+        this.groups = response.data;
+      });
+    },
   },
 };
 </script>

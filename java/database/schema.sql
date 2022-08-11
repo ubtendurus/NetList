@@ -26,7 +26,9 @@ CREATE TABLE groups (
     group_id SERIAL,
     group_name varchar(100) NOT NULL UNIQUE,
     group_key varchar(8),
-    CONSTRAINT PK_group PRIMARY KEY (group_id)
+    owner_id integer NOT NULL,
+    CONSTRAINT PK_group PRIMARY KEY (group_id),
+    CONSTRAINT FK_group_owner FOREIGN KEY (owner_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE category (
