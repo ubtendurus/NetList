@@ -4,6 +4,7 @@ import com.techelevator.model.Item;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class JdbcItemDao implements ItemDao {
 
 
     @Override
-    public boolean createItem(Item item) {
+    public boolean createItem(Item item, Principal principal) {
         String sql = "INSERT INTO items (item_name, item_description) VALUES (?, ?)";
         return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription()) > 0;
     }
@@ -28,9 +29,9 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public void deleteItem(Item item){
+    public void deleteItem(Long itemId, Principal principal){
         String sql = "DELETE FROM items WHERE item_id = ?";
-        jdbcTemplate.update(sql, item.getItemId());
+        jdbcTemplate.update(sql, itemId);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public List<Item> getAllItems() {
+    public List<Item> getAllItems(Principal principal) {
         List<Item> items = new ArrayList<>();
         String sql = "SELECT * FROM items";
 
