@@ -84,9 +84,12 @@ CREATE TABLE items_in_lists(
     quantity INTEGER NOT NULL,
     item_note varchar(50) NOT NULL,
     is_purchased BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+    user_id INTEGER NOT NULL,
     CONSTRAINT PK_item_in_lists PRIMARY KEY (item_in_lists_id),
     CONSTRAINT FK_list_item_list FOREIGN KEY (list_id) REFERENCES lists(list_id) ON DELETE CASCADE,
-    CONSTRAINT FK_list_item_item FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE
+    CONSTRAINT FK_list_item_item FOREIGN KEY (item_id) REFERENCES items(item_id) ON DELETE CASCADE,
+    CONSTRAINT FK_list_item_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE user_list(

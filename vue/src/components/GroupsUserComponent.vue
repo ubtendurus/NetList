@@ -21,7 +21,7 @@
                     <div class="pl-3">
                       <div class="flex items-center text-sm leading-none">
                         <p class="font-semibold text-gray-800">
-                          {{ group.groupName }}
+                          {{ group.groupName }} {{ group.ownerId }}
                         </p>
                         <p class="text-indigo-700 ml-3">
                           {{ group.groupKey }}
@@ -42,7 +42,7 @@
                   </div>
                 </td>
                 <td class="pl-16">
-                  <div>
+                  <div v-if="group.ownerId === $store.state.user.id">
                     <div
                       class="
                         flex
@@ -89,6 +89,27 @@
                       </p>
                     </div>
                   </div>
+                  <div v-else>
+                    <div
+                      class="
+                        flex
+                        items-center
+                        justify-center
+                        px-2
+                        py-1
+                        mt-2
+                        bg-red-100
+                        rounded-full
+                      "
+                    >
+                      <p
+                        class="text-xs leading-3 text-red-700 cursor-pointer"
+                        @click.self="deleteGroup(group.groupId)"
+                      >
+                        Leave
+                      </p>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -108,6 +129,7 @@ export default {
       groups: {
         groupName: "",
         groupKey: "",
+        ownerId: "",
       },
     };
   },

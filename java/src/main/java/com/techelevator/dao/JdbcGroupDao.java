@@ -47,11 +47,14 @@ public class JdbcGroupDao implements GroupDao {
     @Override
     public void deleteGroup(Long groupId,Principal principal) {
         UserDao userDao = new JdbcUserDao(jdbcTemplate);
-        String ownerName = principal.getName();
-        Long ownerId = (long) userDao.findIdByUsername(ownerName);
+        String userName = principal.getName();
+        Long userId = (long) userDao.findIdByUsername(userName);
+
+        String sql2= "DELETE FROM group_user WHERE group_id = ? AND user_id = ?";
+        jdbcTemplate.update(sql2, groupId, userId);
 
         String sql = "DELETE FROM groups WHERE group_id = ? AND owner_id = ?";
-        jdbcTemplate.update(sql, groupId,ownerId);
+        jdbcTemplate.update(sql, groupId,userId);
     }
 
     @Override
@@ -137,6 +140,7 @@ public class JdbcGroupDao implements GroupDao {
         group.setGroupId(results.getLong("group_id"));
         group.setGroupName(results.getString("group_name"));
         group.setGroupKey(results.getString("group_key"));
+        group.setOwnerId(results.getLong("owner_id"));
         return group;
     }
 }

@@ -66,6 +66,10 @@ public class JdbcItemInListDao implements ItemInListDao{
         itemInList.setQuantity(results.getInt("quantity"));
         itemInList.setItemNote(results.getString("item_note"));
         itemInList.setPurchased(results.getBoolean("is_purchased"));
+        if(results.getDate("created_at") != null) {
+            itemInList.setCreatedAt(results.getDate("created_at").toLocalDate());
+        }
+        itemInList.setUserId(results.getLong("user_id"));
         return itemInList;
     }
 }
