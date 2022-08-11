@@ -3,11 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.model.Item;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcItemDao implements ItemDao {
     private final JdbcTemplate jdbcTemplate;
 
@@ -18,13 +20,13 @@ public class JdbcItemDao implements ItemDao {
 
     @Override
     public boolean createItem(Item item, Principal principal) {
-        String sql = "INSERT INTO items (item_name, item_description) VALUES (?, ?)";
+        String sql = "INSERT INTO items (name, description) VALUES (?, ?)";
         return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription()) > 0;
     }
 
     @Override
     public boolean updateItem(Item item) {
-        String sql = "UPDATE items SET item_name = ?, item_description = ? WHERE item_id = ?";
+        String sql = "UPDATE items SET name = ?, description = ? WHERE item_id = ?";
         return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), item.getItemId()) > 0;
     }
 
@@ -47,7 +49,7 @@ public class JdbcItemDao implements ItemDao {
 
     @Override
     public Item getItemByName(String itemName) {
-        String sql="SELECT * FROM items WHERE item_name = ?";
+        String sql="SELECT * FROM items WHERE name = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itemName);
         if (results.next()) {
             return mapRowToItem(results);
@@ -84,8 +86,8 @@ public class JdbcItemDao implements ItemDao {
     private Item mapRowToItem(SqlRowSet results) {
         Item item = new Item();
         item.setItemId(results.getLong("item_id"));
-        item.setItemName(results.getString("item_name"));
-        item.setItemDescription(results.getString("item_description"));
+        item.setItemName(results.getString("name"));
+        item.setItemDescription(results.getString("description"));
         item.setCategoryId(results.getLong("category_id"));
         return item;
     }

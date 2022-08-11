@@ -4,10 +4,13 @@ package com.techelevator.dao;
 import com.techelevator.model.ItemInList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcItemInListDao implements ItemInListDao{
 
     private final JdbcTemplate jdbcTemplate;
@@ -18,21 +21,27 @@ public class JdbcItemInListDao implements ItemInListDao{
 
 
     @Override
-    public boolean createItemInList(ItemInList itemInList) {
-        String sql="INSERT INTO items_in_lists (list_id, item_id, quantity, item_note) VALUES (?, ?, ?,?)";
-        return jdbcTemplate.update(sql, itemInList.getListId(), itemInList.getItemId(), itemInList.getQuantity(),itemInList.getItemNote()) > 0;
+    public boolean createItemInList(ItemInList itemInList, Principal principal) {
+        UserDao userDao = new JdbcUserDao(jdbcTemplate);
+        String userName = principal.getName();
+        int userId = userDao.findIdByUsername(userName);
+        itemInList.setUserId((long)userId);
+
+
+        String sql="INSERT INTO items_in_lists (list_id, item_id, quantity, item_note, user_id) VALUES (?, ?, ?, ?, ?)";
+        return jdbcTemplate.update(sql, itemInList.getListId(), itemInList.getItemId(), itemInList.getQuantity(),itemInList.getItemNote(), itemInList.getUserId()) > 0;
     }
 
     @Override
-    public boolean updateItemInList(ItemInList itemInList) {
-        String sql="UPDATE items_in_lists SET list_id = ?, item_id = ?, quantity = ?, item_note = ? , is_purchased = ? WHERE item_in_list_id = ?";
-        return jdbcTemplate.update(sql, itemInList.getListId(), itemInList.getItemId(), itemInList.getQuantity(),itemInList.getItemNote(), itemInList.getItemInListId(), itemInList.isPurchased()) > 0;
+    public boolean updateItemInList(Long shoppinglistitemId, ItemInList itemInList) {
+        String sql="UPDATE items_in_lists SET list_id = ?, item_id = ?, quantity = ?, item_note = ? , is_purchased = ? WHERE item_in_lists_id = ?";
+        return jdbcTemplate.update(sql, itemInList.getListId(), itemInList.getItemId(), itemInList.getQuantity(), itemInList.getItemNote(), itemInList.isPurchased(), shoppinglistitemId) > 0;
     }
 
     @Override
-    public void deleteItemInList(ItemInList itemInList) {
-        String sql="DELETE FROM items_in_lists WHERE item_in_list_id = ?";
-        jdbcTemplate.update(sql, itemInList.getItemInListId());
+    public void deleteItemInList(Long itemInListId, Principal principal) {
+        String sql="DELETE FROM items_in_lists WHERE item_in_lists_id = ?";
+        jdbcTemplate.update(sql, itemInListId);
         //TODO database add cascade to delete items in list when list is deleted
     }
 
@@ -49,7 +58,7 @@ public class JdbcItemInListDao implements ItemInListDao{
 
     @Override
     public ItemInList getItemInListById(Long itemInListId) {
-        String sql = "SELECT * FROM items_in_lists WHERE item_in_list_id = ?";
+        String sql = "SELECT * FROM items_in_lists WHERE item_in_lists_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itemInListId);
         if (results.next()) {
             return mapRowToItemInList(results);
@@ -60,7 +69,7 @@ public class JdbcItemInListDao implements ItemInListDao{
 
     public ItemInList mapRowToItemInList(SqlRowSet results) {
         ItemInList itemInList = new ItemInList();
-        itemInList.setItemInListId(results.getLong("item_in_list_id"));
+        itemInList.setItemInListId(results.getLong("item_in_lists_id"));
         itemInList.setListId(results.getLong("list_id"));
         itemInList.setItemId(results.getLong("item_id"));
         itemInList.setQuantity(results.getInt("quantity"));
