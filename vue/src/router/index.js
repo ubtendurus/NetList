@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Groups from '../views/Groups.vue'
 import ShoppingList from '../views/ShoppingList.vue'
+import ShowListItems from '../views/ShowListItems.vue'
 
 Vue.use(Router)
 
@@ -70,7 +71,15 @@ const router = new Router({
       meta : {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: "/showlistitems:id",
+      name: "showlistitems",
+      component: ShowListItems,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 

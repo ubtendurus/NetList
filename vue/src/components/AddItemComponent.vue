@@ -9,6 +9,14 @@
         v-model="item.itemName"
         placeholder="Item Name"
       />
+      <label for="itemQuantity">Item Quantity: </label>
+      <input
+        type="number"
+        name="itemQuantity"
+        id="itemQuantity"
+        v-model="item.quantity"
+        placeholder="Item Quantity"
+      />
       <label for="itemDescription">Description: </label>
       <input
         type="text"
@@ -16,6 +24,14 @@
         id="itemDescription"
         v-model="item.itemDescription"
         placeholder="Description"
+      />
+      <label for="itemNote">Description: </label>
+      <input
+        type="text"
+        name="itemNote"
+        id="itemNote"
+        v-model="item.itemNote"
+        placeholder="Item Note"
       />
       <label for="itemCategory">Category: </label>
       <select v-model="selectedCategoryId" @change="assignCategoryId">
@@ -43,6 +59,8 @@ export default {
         itemName: "",
         itemDescription: "",
         categoryId: "",
+        quantity: "",
+        itemNote: "",
       },
       categories: {
         categoryId: "",

@@ -72,7 +72,13 @@
                       <div class="pl-3">
                         <div class="flex items-center text-sm leading-none">
                           <p class="font-semibold text-gray-800">
-                            {{ list.listName }}
+                            <router-link
+                              :to="{
+                                name: 'showlistitems',
+                                param: { listId: list.listId },
+                              }"
+                              >{{ list.listName }}</router-link
+                            >
                           </p>
                           <p class="text-indigo-700 ml-3">
                             (Anything can come here)
