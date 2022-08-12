@@ -1,10 +1,20 @@
 <template>
   <div>
-    <ul v-for="item in filterItemsbyListId" v-bind:key="item.itemId">
-      <li>{{ item.itemName }}</li>
-      <li>{{ item.quantity }}</li>
-      <li>{{ item.itemNote }}</li>
-    </ul>
+    <table>
+
+      <tr v-for="item in filterItemsbyListId" v-bind:key="item.itemId">
+        <td>{{ item.itemName }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.itemNote }}</td>
+        <td>{{ item.itemId }}</td>
+        <td>
+          <form>
+            <label for="isPurchased">Purchased</label>
+            <input type="checkbox" id="isPurchased" v-model="item.isPurchased" @change.prevent="updateItem"/>
+          </form>
+        </td>
+      </tr>
+    </table>
   </div>
 </template>
 
@@ -29,6 +39,13 @@ export default {
       return this.items.filter((item) => item.listId === this.listId);
     },
   },
+  methods: {
+    updateItem() {
+      ItemService.updateItem(this.item).then((response) => {
+        this.item = response.data;
+      })
+    }
+  }
 };
 </script>
 

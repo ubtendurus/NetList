@@ -12,6 +12,10 @@ export default {
     getAllCategories(){
         const url = "/categories";
         return axios.get(url);
+    },
+    updateItem(item) {
+        const url = "/items/" + this.item.itemId;
+        return axios.put(url, item);
     }
 
 }
