@@ -73,8 +73,8 @@ const router = new Router({
       }
     },
     {
-      path: "/showlistitems:id",
-      name: "showlistitems",
+      path: "/show-list-items/:listId",
+      name: "show-list-items",
       component: ShowListItems,
       meta: {
         requiresAuth: true

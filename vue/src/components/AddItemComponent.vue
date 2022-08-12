@@ -1,6 +1,7 @@
 <template>
   <div>
     <form @submit.prevent="createItem">
+      <input disabled type="text" v-model="item.listId" />
       <label for="itemName">Item Name: </label>
       <input
         type="text"
@@ -52,6 +53,7 @@
 import itemService from "@/services/ItemService.js";
 export default {
   name: "add-item-component",
+  props: ["listId"],
   data() {
     return {
       selectedCategoryId: "",
@@ -84,6 +86,7 @@ export default {
     itemService.getAllCategories().then((response) => {
       this.categories = response.data;
     });
+    this.item.listId = this.listId;
   },
 };
 </script>

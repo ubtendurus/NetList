@@ -74,8 +74,10 @@
                           <p class="font-semibold text-gray-800">
                             <router-link
                               :to="{
-                                name: 'showlistitems',
-                                param: { listId: list.listId },
+                                name: 'show-list-items',
+                                params: {
+                                  listId: list.listId,
+                                },
                               }"
                               >{{ list.listName }}</router-link
                             >
