@@ -24,7 +24,7 @@
                           {{ group.groupName }}
                         </p>
                         <p class="text-indigo-700 ml-3">
-                          {{ group.groupKey }}
+                          Group Key: {{ group.groupKey }}
                         </p>
                       </div>
                       <p
