@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      <add-item-component />
+      <add-item-component v-bind:listId="listId" />
     </div>
-    <show-list-items-component />
+    <show-list-items-component v-bind:listId="listId" />
   </div>
 </template>
 
@@ -13,7 +13,14 @@ import AddItemComponent from "@/components/AddItemComponent.vue";
 export default {
   name: "show-list-items",
   components: { AddItemComponent, ShowListItemsComponent },
-  prop: ["listId"],
+  data() {
+    return {
+      listId: 0,
+    };
+  },
+  created() {
+    this.listId = this.$route.params.listId;
+  },
 };
 </script>
 

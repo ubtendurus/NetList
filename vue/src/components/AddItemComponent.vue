@@ -86,7 +86,7 @@ export default {
     itemService.getAllCategories().then((response) => {
       this.categories = response.data;
     });
-    this.item.listId = this.listId;
+    this.item.listId = this.$route.params.listId;
   },
 };
 </script>

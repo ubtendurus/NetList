@@ -56,7 +56,7 @@
             <table class="w-full whitespace-nowrap">
               <tbody
                 v-for="list in filterListsbyGroupId"
-                v-bind:key="list.id"
+                v-bind:key="list.listId"
                 class="group"
               >
                 <tr tabindex="0" class="focus:outline-none">

@@ -5,9 +5,9 @@ export default {
         const url = "/items";
         return axios.post(url, item);
     },
-    getAllItems(listId) {
-        const url = "/items/" + listId;
-        return axios.get(url,listId);
+    getAllItems() {
+        const url = "/items";
+        return axios.get(url);
     },
     getAllCategories(){
         const url = "/categories";
