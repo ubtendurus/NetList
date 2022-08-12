@@ -33,8 +33,11 @@ public class JdbcItemDao implements ItemDao {
 
     @Override
     public boolean createItem(Item item, Principal principal) {
-        String sql = "INSERT INTO items (name, description, category_id) VALUES (?, ? , ?)";
-        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), item.getCategoryId()) > 0;
+        String sql = "INSERT INTO items (name, description, category_id, list_id, quantity, item_note, is_purchased, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String userName = principal.getName();
+        UserDao userDao = new JdbcUserDao(jdbcTemplate);
+        Long userId = (long)userDao.findIdByUsername(userName);
+        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), item.getCategoryId(), item.getListId(), item.getQuantity(), item.getItemNote(), item.isPurchased(), userId) > 0;
     }
 
     @Override
@@ -102,6 +105,15 @@ public class JdbcItemDao implements ItemDao {
         item.setItemName(results.getString("name"));
         item.setItemDescription(results.getString("description"));
         item.setCategoryId(results.getLong("category_id"));
+        item.setListId(results.getLong("list_id"));
+        item.setQuantity(results.getInt("quantity"));
+        item.setItemNote(results.getString("item_note"));
+        item.setPurchased(results.getBoolean("is_purchased"));
+        if(results.getDate("created_at") != null) {
+            item.setCreatedAt(results.getDate("created_at").toLocalDate());
+        }
+        item.setUserId(results.getLong("user_id"));
+
         return item;
     }
 

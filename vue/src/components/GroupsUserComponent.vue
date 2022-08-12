@@ -21,7 +21,7 @@
                     <div class="pl-3">
                       <div class="flex items-center text-sm leading-none">
                         <p class="font-semibold text-gray-800">
-                          {{ group.groupName }} {{ group.ownerId }}
+                          {{ group.groupName }}
                         </p>
                         <p class="text-indigo-700 ml-3">
                           {{ group.groupKey }}
