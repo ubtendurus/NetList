@@ -131,6 +131,7 @@ export default {
       groups: {
         groupName: "",
         groupKey: "",
+        ownerId: "",
       },
     };
   },

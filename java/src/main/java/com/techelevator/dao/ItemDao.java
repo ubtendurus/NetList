@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Category;
 import com.techelevator.model.Item;
 
 import java.security.Principal;
@@ -20,5 +21,7 @@ public interface ItemDao {
     List<Item> getAllItems(Principal principal);
 
     List<Item> getAllItemsByCategoryId(Long categoryId);
+
+    List<Category> getAllCategories();
 
 }

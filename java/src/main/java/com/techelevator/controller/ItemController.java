@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ItemDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.model.Category;
 import com.techelevator.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +28,10 @@ public class ItemController {
     }
     @GetMapping("/items")
         public List<Item> getAllItems(Principal principal){return itemDao.getAllItems(principal);}
+
+    @GetMapping("/categories")
+    public List<Category> getAllCategories(){return itemDao.getAllCategories();}
+
 
     @PostMapping("/items")
     @ResponseStatus(HttpStatus.CREATED)

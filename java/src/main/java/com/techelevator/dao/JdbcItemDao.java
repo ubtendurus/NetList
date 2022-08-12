@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Category;
 import com.techelevator.model.Item;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -19,9 +20,21 @@ public class JdbcItemDao implements ItemDao {
 
 
     @Override
+    public List<Category> getAllCategories() {
+        List<Category> categories = new ArrayList<>();
+        String sqlGetAllCategories = "SELECT * FROM category";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllCategories);
+        while (results.next()) {
+            Category category = mapRowToCategory(results);
+            categories.add(category);
+        }
+        return categories;
+    }
+
+    @Override
     public boolean createItem(Item item, Principal principal) {
-        String sql = "INSERT INTO items (name, description) VALUES (?, ?)";
-        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription()) > 0;
+        String sql = "INSERT INTO items (name, description, category_id) VALUES (?, ? , ?)";
+        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), item.getCategoryId()) > 0;
     }
 
     @Override
@@ -90,5 +103,12 @@ public class JdbcItemDao implements ItemDao {
         item.setItemDescription(results.getString("description"));
         item.setCategoryId(results.getLong("category_id"));
         return item;
+    }
+
+    private Category mapRowToCategory(SqlRowSet results) {
+        Category category = new Category();
+        category.setCategoryId(results.getLong("category_id"));
+        category.setCategoryName(results.getString("category_name"));
+        return category;
     }
 }
