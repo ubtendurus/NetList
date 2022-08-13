@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center py-8 mr-auto ml-auto">
-    <form id="createItemForm" @submit.self="createItem()">
+    <form id="createItemForm" @submit.self="updateItem()">
       <div class="flex flex-col md:mr-16">
         <label
           for="itemName"
@@ -198,7 +198,7 @@
               text-gray-600
             "
           >
-            Add Item
+            Update Item
           </p>
         </button>
       </div>
@@ -209,8 +209,8 @@
 <script>
 import itemService from "@/services/ItemService.js";
 export default {
-  name: "add-item-component",
-  props: ["listId"],
+  name: "edit-item-component",
+  props: ["itemId"],
   data() {
     return {
       selectedCategoryId: "",
@@ -228,8 +228,8 @@ export default {
     };
   },
   methods: {
-    createItem() {
-      itemService.createItem(this.item).then(() => {
+    updateItem() {
+      itemService.updateItem(this.item).then(() => {
         this.$router.go(this.$router.currentRoute);
       });
     },
@@ -240,6 +240,10 @@ export default {
   created() {
     itemService.getAllCategories().then((response) => {
       this.categories = response.data;
+    });
+    itemService.getItemById(this.itemId).then((item) => {
+      this.item = item.data;
+      this.selectedCategoryId = item.categoryId;
     });
     this.item.listId = this.$route.params.listId;
   },

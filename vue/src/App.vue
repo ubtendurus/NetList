@@ -25,6 +25,7 @@
             class="
               cursor-pointer
               h-full
+              flex
               xl:flex
               items-center
               text-sm text-indigo-500
@@ -39,6 +40,7 @@
           </li>
           <li
             class="
+              flex
               hover:text-indigo-500
               cursor-pointer
               h-full
@@ -46,6 +48,7 @@
               items-center
               text-sm text-white
               xl:ml-10
+              ml-10
               tracking-normal
               relative
             "
@@ -57,7 +60,7 @@
               Groups
             </router-link>
           </li>
-          <li class="mx-0 xl:mx-12 cursor-pointer">
+          <li class="mx-0 mx-12 cursor-pointer flex">
             <router-link v-bind:to="{ name: 'home' }">
               <svg
                 aria-label="Home"
@@ -82,6 +85,7 @@
               cursor-pointer
               h-full
               xl:flex
+              flex
               items-center
               text-sm text-white
               mr-10
@@ -101,6 +105,7 @@
               cursor-pointer
               h-full
               xl:flex
+              flex
               items-center
               text-sm text-white
               tracking-normal
@@ -121,6 +126,7 @@
             cursor-pointer
             h-full
             xl:flex
+            flex
             items-center
             justify-end
             hidden
@@ -137,6 +143,7 @@
                 cursor-pointer
                 h-full
                 xl:flex
+                flex
                 items-center
                 text-sm text-white
                 tracking-normal

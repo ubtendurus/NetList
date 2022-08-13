@@ -1,55 +1,66 @@
 <template>
-  <div class="md:mr-16">
-    <label
-      for="group"
-      class="
-        text-gray-800
-        dark:text-gray-100
-        text-sm
-        font-bold
-        leading-tight
-        tracking-normal
-        mb-2
-        mt-5
-      "
-      >Select a Group:</label
-    >
-    <select
-      name="group"
-      id="groups"
-      v-model="selectedGroupId"
-      class="
-        opacity-100
-        bg-white
-        dark:bg-gray-800
-        shadow
-        rounded
-        mt-2
-        w-48
-        py-1
-        absolute
-      "
-    >
-      <option
-        :value="group.groupId"
-        v-for="group in groups"
-        v-bind:key="group.groupId"
+  <body class="flex items-center justify-center py-8 mr-auto ml-auto">
+    <div class="flex flex-col md:mr-16">
+      <label
+        for="group"
+        class="
+          text-gray-800
+          dark:text-gray-100
+          text-sm
+          font-bold
+          leading-tight
+          tracking-normal
+          mb-2
+          ml-auto
+          mr-auto
+        "
+        >Select a Group:</label
+      >
+      <select
+        name="group"
+        id="groups"
+        v-model="selectedGroupId"
         class="
           text-gray-600
-          dark:text-gray-400 dark:hover:bg-gray-700
-          text-sm
-          leading-3
-          tracking-normal
-          py-3
-          hover:bg-gray-100
-          px-3
+          dark:text-gray-400
+          focus:outline-none focus:border focus:border-indigo-700
+          dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
+          bg-white
           font-normal
+          w-64
+          h-10
+          flex
+          items-center
+          pl-3
+          text-sm
+          border-gray-300
+          rounded
+          border
+          shadow
+          mb-5
+          ml-auto
+          mr-auto
         "
       >
-        {{ group.groupName }}
-      </option>
-    </select>
-    <body class="flex items-center justify-center py-8">
+        <option
+          :value="group.groupId"
+          v-for="group in groups"
+          v-bind:key="group.groupId"
+          class="
+            text-gray-600
+            dark:text-gray-400 dark:hover:bg-gray-700
+            text-sm
+            leading-3
+            tracking-normal
+            py-3
+            hover:bg-gray-100
+            px-3
+            font-normal
+          "
+        >
+          {{ group.groupName }}
+        </option>
+      </select>
       <div class="w-full max-w-2xl px-4" v-if="selectedGroupId != 0">
         <div class="border rounded-lg border pb-6 border-gray-200">
           <div class="px-6 pt-6 overflow-x-auto">
@@ -150,8 +161,8 @@
           </div>
         </div>
       </div>
-    </body>
-  </div>
+    </div>
+  </body>
 </template>
 
 <script>

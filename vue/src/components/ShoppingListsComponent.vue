@@ -1,27 +1,125 @@
 <template>
-  <div>
+  <div class="flex items-center justify-center py-8 mr-auto ml-auto">
     <form id="createListForm" @submit.self="createList()">
-      <label for="listName">List Name: </label>
-      <input
-        type="text"
-        id="listName"
-        placeholder="List Name"
-        v-model="lists.listName"
-        required
-        autofocus
-      />
-      <label for="group">Select a Group:</label>
-
-      <select name="group" id="groups" v-model="lists.groupId">
-        <option
-          :value="group.groupId"
-          v-for="group in groups"
-          v-bind:key="group.groupId"
+      <div class="flex flex-col md:mr-16">
+        <label
+          for="listName"
+          class="
+            text-gray-800
+            dark:text-gray-100
+            text-sm
+            font-bold
+            leading-tight
+            tracking-normal
+            mb-2
+          "
+          >List Name</label
         >
-          {{ group.groupName }}
-        </option>
-      </select>
-      <button type="submit">Create List</button>
+        <input
+          id="listName"
+          class="
+            text-gray-600
+            dark:text-gray-400
+            focus:outline-none focus:border focus:border-indigo-700
+            dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
+            bg-white
+            font-normal
+            w-64
+            h-10
+            flex
+            items-center
+            pl-3
+            text-sm
+            border-gray-300
+            rounded
+            border
+            shadow
+          "
+          v-model="lists.listName"
+          required
+          autofocus
+          placeholder="List Name"
+        />
+        <br />
+        <label
+          for="group"
+          class="
+            text-gray-800
+            dark:text-gray-100
+            text-sm
+            font-bold
+            leading-tight
+            tracking-normal
+            mb-2
+          "
+          >Select Group</label
+        >
+        <select
+          id="groups"
+          class="
+            text-gray-600
+            dark:text-gray-400
+            focus:outline-none focus:border focus:border-indigo-700
+            dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
+            bg-white
+            font-normal
+            w-64
+            h-10
+            flex
+            items-center
+            pl-3
+            text-sm
+            border-gray-300
+            rounded
+            border
+            shadow
+          "
+          name="group"
+          v-model="lists.groupId"
+          required
+        >
+          <option
+            :value="group.groupId"
+            v-for="group in groups"
+            v-bind:key="group.groupId"
+          >
+            {{ group.groupName }}
+          </option>
+        </select>
+        <button
+          type="submit"
+          class="
+            mt-8
+            ml-auto
+            mr-auto
+            focus:outline-none
+            focus:ring-2
+            focus:ring-indigo-700
+            focus:bg-indigo-50
+            flex
+            cursor-pointer
+            items-center
+            justify-center
+            px-3
+            py-2.5
+            border
+            rounded
+            border-gray-100
+          "
+        >
+          <p
+            class="
+              focus:outline-none
+              text-xs
+              md:text-sm
+              leading-none
+              text-gray-600
+            "
+          >
+            Create List
+          </p>
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -46,7 +144,10 @@ export default {
     createList() {
       shoppingListsService.create(this.lists).then((response) => {
         if (response.status === 201) {
-          this.$router.push({ name: "shopping-lists" });
+          this.$router.push({
+            name: "shopping-lists",
+            params: { listId: response.data.listId },
+          });
         }
         this.lists = response.data;
       });

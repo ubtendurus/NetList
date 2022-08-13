@@ -8,6 +8,7 @@ import store from '../store/index'
 import Groups from '../views/Groups.vue'
 import ShoppingList from '../views/ShoppingList.vue'
 import ShowListItems from '../views/ShowListItems.vue'
+import EditItem from '../views/EditItem.vue'
 
 Vue.use(Router)
 
@@ -80,6 +81,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/edititem/:itemId",
+      name: "edit-item",
+      component: EditItem,
+      meta: {
+        requiresAuth: true
+      }
+    }
   ]
 })
 
