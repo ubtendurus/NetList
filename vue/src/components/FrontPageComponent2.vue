@@ -85,10 +85,10 @@
               </defs>
             </svg>
             <p class="xl:w-80 text-base leading-normal text-center mt-4">
-              Keeping track of grocery lists has never been easier than with NetList.
-              Whether it's for stocking one of my many esteemed restaurants or to make sure I have the ingredients 
-              necessary to make one of my legendary grilled cheese sandwiches at home, I know I'm 
-              always prepared with NetList. The raw intellect of the folks at IntelliGents is on full display here. 
+              Keeping track of grocery lists has never been easier. 
+              Whether it's for stocking one of my many esteemed restaurants or to make sure I have the ingredients at home
+              to make one of my legendary grilled cheese sandwiches, I know I'm 
+              always prepared with NetList.
             </p>
           </div>
           <div
