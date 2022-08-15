@@ -45,7 +45,7 @@
           </ul>
         </div>
         <div class="text-sm text-color mb-10 f-f-l">
-          <p>© 2020 Prodify. All rights reserved</p>
+          <p>© 2020 IntelliGents. All rights reserved</p>
         </div>
       </div>
       <div class="w-9/12 h-0.5 bg-gray-100 rounded-full"></div>
