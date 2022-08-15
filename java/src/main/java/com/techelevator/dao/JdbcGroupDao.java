@@ -125,9 +125,9 @@ public class JdbcGroupDao implements GroupDao {
     public List<Group> getGroupsByUserId(Long userId) {
         List<Group> groups = new ArrayList<>();
         String sql = "SELECT * FROM groups WHERE group_id = " +
-                "(SELECT group_id FROM group_user WHERE user_id = ?)";
+                "(SELECT group_id FROM group_user)";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Group group = mapRowToGroup(results);
             groups.add(group);

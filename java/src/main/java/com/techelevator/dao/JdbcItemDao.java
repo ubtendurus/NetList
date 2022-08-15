@@ -41,9 +41,22 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public boolean updateItem(Item item) {
+    public boolean updateItem(Long itemId, Item item) {
         String sql = "UPDATE items SET name = ?, description = ? WHERE item_id = ?";
-        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), item.getItemId()) > 0;
+        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), itemId) > 0;
+    }
+
+    @Override
+    public boolean updateItemPurchased(Long itemId,Principal principal) {
+        String sqlPurchaseGet = "SELECT is_purchased FROM items WHERE item_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sqlPurchaseGet, itemId);
+        boolean isPurchased = false;
+        if (result.next()) {
+            isPurchased = result.getBoolean("is_purchased");
+        }
+
+        String sql = "UPDATE items SET is_purchased = ? WHERE item_id = ?";
+        return jdbcTemplate.update(sql, !isPurchased, itemId) > 0;
     }
 
     @Override
@@ -53,7 +66,7 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public Item getItemById(int itemId) {
+    public Item getItemById(Long itemId,Principal principal) {
         String sql="SELECT * FROM items WHERE item_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itemId);
         if (results.next()) {
@@ -80,6 +93,18 @@ public class JdbcItemDao implements ItemDao {
         String sql = "SELECT * FROM items";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Item item = mapRowToItem(results);
+            items.add(item);
+        }
+        return items;
+    }
+
+    @Override
+    public List<Item> getAllItemsByList(Long listId, Principal principal) {
+        List<Item>  items = new ArrayList<>();
+        String sql = "SELECT * FROM items WHERE list_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, listId);
         while (results.next()) {
             Item item = mapRowToItem(results);
             items.add(item);

@@ -29,6 +29,9 @@ public class ItemController {
     @GetMapping("/items")
         public List<Item> getAllItems(Principal principal){return itemDao.getAllItems(principal);}
 
+    @GetMapping("/allitems/{listId}")
+    public List<Item> getAllItemsByList(@PathVariable Long listId, Principal principal){return itemDao.getAllItemsByList(listId, principal);}
+
     @GetMapping("/categories")
     public List<Category> getAllCategories(){return itemDao.getAllCategories();}
 
@@ -39,7 +42,15 @@ public class ItemController {
 
     @PutMapping("/items/{itemId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public boolean updateItem(@RequestBody Item item, Principal principal) {return  itemDao.updateItem(item);}
+    public boolean updateItem(@PathVariable Long itemId,@RequestBody Item item, Principal principal) {return  itemDao.updateItem(itemId,item);}
+
+    @PutMapping("/items/{itemId}/purchased")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public boolean updateItemPurchased(@PathVariable Long itemId, Principal principal) {
+        return  itemDao.updateItemPurchased(itemId,principal);}
+
+    @GetMapping("/items/{itemId}")
+    public Item getItemById(@PathVariable Long itemId,Principal principal){return itemDao.getItemById(itemId,principal);}
 
     @DeleteMapping("/items/{itemId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

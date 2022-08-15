@@ -10,15 +10,19 @@ public interface ItemDao {
 
     boolean createItem(Item item, Principal principal);
 
-    boolean updateItem(Item item);
+    boolean updateItem(Long itemId,Item item);
+
+    boolean updateItemPurchased(Long itemId,Principal principal);
 
     void deleteItem( Long itemId, Principal principal);
 
-    Item getItemById(int itemId);
+    Item getItemById(Long itemId,Principal principal);
 
     Item getItemByName(String itemName);
 
     List<Item> getAllItems(Principal principal);
+
+    List<Item> getAllItemsByList(Long listId,Principal principal);
 
     List<Item> getAllItemsByCategoryId(Long categoryId);
 
