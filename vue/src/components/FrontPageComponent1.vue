@@ -20,7 +20,7 @@
             class="
               pt-24
               grid
-              lg:grid-cols-3
+              lg:grid-cols-2
               md:grid-cols-2
               justify-center
               items-center

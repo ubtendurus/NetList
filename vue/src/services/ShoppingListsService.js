@@ -8,5 +8,9 @@ export default {
     getAll() {
         const url = "/shoppinglists";
         return axios.get(url);
+    },
+    delete(listId) {
+        const url = "/shoppinglists/" + listId;
+        return axios.delete(url);
     }
 }

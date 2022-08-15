@@ -43,6 +43,8 @@
             border
             rounded
             border-gray-100
+            ml-10
+            mr-10
           "
         >
           <p

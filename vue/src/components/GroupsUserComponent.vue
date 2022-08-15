@@ -19,12 +19,9 @@
                       />
                     </div>
                     <div class="pl-3">
-                      <div class="flex items-center text-sm leading-none">
+                      <div class="flex items-center text-lg leading-none">
                         <p class="font-semibold text-gray-800">
                           {{ group.groupName }}
-                        </p>
-                        <p class="text-indigo-700 ml-3">
-                          Invite Code: {{ group.groupKey }}
                         </p>
                       </div>
                       <p
@@ -34,9 +31,11 @@
                           leading-none
                           text-gray-600
                           mt-2
+                          text-indigo-700
                         "
                       >
-                        //TODO IDEA: Group Desc? Maybe
+                          Invite Code: {{ group.groupKey }}
+                        
                       </p>
                     </div>
                   </div>

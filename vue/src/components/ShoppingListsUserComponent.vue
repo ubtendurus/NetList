@@ -151,7 +151,9 @@
                           rounded-full
                         "
                       >
-                        <p class="text-xs leading-3 text-red-700">Delete</p>
+                        <p class="text-xs leading-3 text-red-700">
+                          <button @click.prevent="deleteList(list.listId)">Delete</button>
+                        </p>
                       </div>
                     </div>
                   </td>
@@ -203,6 +205,17 @@ export default {
       this.groups = response.data;
     });
   },
+  methods: {
+    deleteList(listId) {
+      ShoppingListsService.delete(listId).then((response) => {
+        if (response.status === 204) {
+          this.$router.go(this.$router.currentRoute);
+        } else {
+          alert("Error deleting group");
+        }
+      });
+    }
+  }
 };
 </script>
 

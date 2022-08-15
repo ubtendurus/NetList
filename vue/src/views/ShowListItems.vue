@@ -20,43 +20,12 @@
             font-semibold
             leading-tight
             text-gray-800
+            mr-8
           "
         >
-          Item List
+          {{getListName(listId).listName}}
         </p>
-        <button
-          @click="
-            showTransferList = !showTransferList;
-            showAddItem = false;
-          "
-          class="
-            focus:outline-none
-            focus:ring-2
-            focus:ring-indigo-700
-            focus:bg-indigo-50
-            flex
-            cursor-pointer
-            items-center
-            justify-center
-            px-3
-            py-2.5
-            border
-            rounded
-            border-gray-100
-          "
-        >
-          <p
-            class="
-              focus:outline-none
-              text-xs
-              md:text-sm
-              leading-none
-              text-gray-600
-            "
-          >
-            Transfer List
-          </p>
-        </button>
+        
         <button
           @click="
             showAddItem = !showAddItem;
@@ -87,7 +56,7 @@
               text-gray-600
             "
           >
-            Add item
+            Add Item
           </p>
         </button>
       </div>
@@ -126,6 +95,8 @@
 import ShowListItemsComponent from "@/components/ShowListItemsComponent.vue";
 import AddItemComponent from "@/components/AddItemComponent.vue";
 import TransferListComponent from "@/components/TransferListComponent.vue";
+import ShoppingListsService from "@/services/ShoppingListsService.js";
+
 export default {
   name: "show-list-items",
   components: {
@@ -139,12 +110,25 @@ export default {
       showTransferList: false,
       listId: 0,
       groupId: 0,
+      lists: []
     };
   },
   created() {
     this.listId = this.$route.params.listId;
     this.groupId = this.$route.params.groupId;
+    ShoppingListsService.getAll().then(
+      (response) => 
+        {this.lists = response.data
+        })
   },
+  methods: {
+    getListName(listId) {
+      return this.lists.find(
+        (x) => 
+      x.listId === listId
+      )
+    }
+  }
 };
 </script>
 

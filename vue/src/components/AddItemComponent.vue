@@ -230,7 +230,7 @@ export default {
   methods: {
     createItem() {
       itemService.createItem(this.item).then(() => {
-        this.$router.go(this.$router.currentRoute);
+        this.$router.go(this.$router.currentRoute, {params: {listId: this.item.listId}});
       });
     },
     assignCategoryId() {
