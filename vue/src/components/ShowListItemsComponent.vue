@@ -5,7 +5,7 @@
         class="border rounded-lg border pb-6 border-gray-200"
         v-if="items.length != 0"
       >
-        <div class="px-6 pt-6 overflow-x-auto">
+        <div class="px-6 pt-2 overflow-x-auto">
           <div class="flex items-center justify-end">
             <button
               class="text-lrg font-semibold leading-none text-right"
@@ -62,7 +62,19 @@
                         "
                         :class="{ itemchecked: item.purchased }"
                       >
-                        {{ item.itemNote }}
+                        Note : {{ item.itemNote }}
+                      </p>
+                      <p
+                        class="
+                          text-xs
+                          md:text-sm
+                          leading-none
+                          text-gray-600
+                          mt-2
+                        "
+                      >
+                        Category :
+                        {{ getCategoryName(item.categoryId).categoryName }}
                       </p>
                     </div>
                   </div>
@@ -139,12 +151,14 @@ export default {
     return {
       markAll: false,
       items: [],
+      categories: [],
     };
   },
   created() {
     //console.log(this.listId);
     this.getAllItems();
     this.checkMarkAll();
+    this.getAllCategories();
   },
   computed: {
     filterItemsbyListId() {
@@ -152,6 +166,17 @@ export default {
     },
   },
   methods: {
+    getAllCategories() {
+      ItemService.getAllCategories().then((response) => {
+        this.categories = response.data;
+      });
+    },
+    //match category id with category name
+    getCategoryName(categoryId) {
+      return this.categories.find(
+        (category) => category.categoryId === categoryId
+      );
+    },
     checkMarkAll() {
       this.items.forEach((item) => {
         if (item.purchased) {

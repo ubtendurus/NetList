@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center py-8 mr-auto ml-auto">
-    <form id="createItemForm" @submit.self="updateItem()">
+    <form id="createItemForm" @submit.prevent="updateItem()">
       <div class="flex flex-col md:mr-16">
         <label
           for="itemName"
@@ -122,52 +122,6 @@
           autofocus
           type="text"
         />
-        <br />
-        <label
-          for="itemCategory"
-          class="
-            text-gray-800
-            dark:text-gray-100
-            text-sm
-            font-bold
-            leading-tight
-            tracking-normal
-            mb-2
-          "
-          >Category</label
-        >
-        <select
-          id="itemCategory"
-          class="
-            text-gray-600
-            dark:text-gray-400
-            focus:outline-none focus:border focus:border-indigo-700
-            dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800
-            bg-white
-            font-normal
-            w-64
-            h-10
-            flex
-            items-center
-            pl-3
-            text-sm
-            border-gray-300
-            rounded
-            border
-            shadow
-          "
-          v-model="selectedCategoryId"
-          @change="assignCategoryId"
-          required
-        >
-          <option
-            :value="category.categoryId"
-            v-for="category in categories"
-            v-bind:key="category.categoryId"
-          >
-            {{ category.categoryName }}
-          </option>
-        </select>
         <button
           type="submit"
           class="
@@ -229,8 +183,8 @@ export default {
   },
   methods: {
     updateItem() {
-      itemService.updateItem(this.item).then(() => {
-        this.$router.go(this.$router.currentRoute);
+      itemService.updateItem(this.itemId, this.item).then(() => {
+        this.$router.go(-1);
       });
     },
     assignCategoryId() {
@@ -243,7 +197,7 @@ export default {
     });
     itemService.getItemById(this.itemId).then((item) => {
       this.item = item.data;
-      this.selectedCategoryId = item.categoryId;
+      this.selectedCategoryId = this.item.categoryId;
     });
     this.item.listId = this.$route.params.listId;
   },

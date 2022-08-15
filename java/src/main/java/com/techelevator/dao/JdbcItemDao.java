@@ -42,8 +42,8 @@ public class JdbcItemDao implements ItemDao {
 
     @Override
     public boolean updateItem(Long itemId, Item item) {
-        String sql = "UPDATE items SET name = ?, description = ? WHERE item_id = ?";
-        return jdbcTemplate.update(sql, item.getItemName(), item.getItemDescription(), itemId) > 0;
+        String sql = "UPDATE items SET name = ?, item_note = ? ,quantity=? WHERE item_id = ?";
+        return jdbcTemplate.update(sql, item.getItemName(), item.getItemNote(), item.getQuantity(), itemId) > 0;
     }
 
     @Override

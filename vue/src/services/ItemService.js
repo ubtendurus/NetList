@@ -25,8 +25,8 @@ export default {
         const url = "/items/" + itemId;
         return axios.delete(url);
     },
-    updateItem(item) {
-        const url = "/items/" + item.itemId;
+  updateItem(itemId,item) {
+        const url = "/items/" + itemId;
         return axios.put(url, item);
     },
     getItemById(itemId) {
