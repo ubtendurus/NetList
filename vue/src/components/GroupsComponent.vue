@@ -52,7 +52,7 @@
             tracking-normal
             mb-2
           "
-          >Group Key</label
+          >Invite Code</label
         >
         <input
           id="groupKey"
@@ -77,7 +77,7 @@
           v-model="groups.groupKey"
           required
           autofocus
-          placeholder="Group Key"
+          placeholder="Invite Code"
           disabled
         />
 

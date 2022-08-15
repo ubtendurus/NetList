@@ -15,7 +15,7 @@
           tabindex="0"
           class="
             focus:outline-none
-            text-sm
+            text-2xl
             lg:text-xl
             font-semibold
             leading-tight

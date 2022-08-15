@@ -97,7 +97,7 @@
           flex
           items-center
           border-b border-gray-200
-          justify-between
+          justify-center
           px-6
           py-3
         "
@@ -140,7 +140,7 @@
             v-model="groups.groupKey"
             required
             autofocus
-            placeholder="Group Key"
+            placeholder="Invite Code"
           />
 
           <button
