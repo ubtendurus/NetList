@@ -12,14 +12,15 @@
       "
     >
       <div class="flex flex-col items-center justify-center">
-        <img
+        <titlecomponent/>
+        <!-- <img
           width="188"
           height="74"
           viewBox="0 0 188 74"
           fill="none"
           style="border-radius: 1000px"
           src="..\assets\imgs\jparker.jpg"
-        />
+        /> -->
         <div
           class="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10 mt-16"
         >
@@ -169,10 +170,11 @@
 
 <script>
 import authService from "../services/AuthService";
+import titlecomponent from "../components/TitleComponent.vue"
 
 export default {
   name: "login",
-  components: {},
+  components: {titlecomponent},
   data() {
     return {
       user: {
