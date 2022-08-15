@@ -14,7 +14,7 @@
               dark:text-white
             "
           >
-            <h1>Tailor-made features</h1>
+            <h1>NetList features</h1>
           </div>
           <div
             class="
@@ -90,7 +90,7 @@
                 "
               >
                 <p>
-                  Workflow can help streamline and simplify complex lists.
+                  Workflow can help streamline and manage complex lists.
                 </p>
               </div>
             </div>
@@ -151,8 +151,7 @@
                 "
               >
                 <p>
-                  A flexible software architecture is able to change based on
-                  usability requirements
+                  Work with others in groups to tackle lists together across multiple platforms.
                 </p>
               </div>
             </div>
@@ -213,7 +212,7 @@
                 "
               >
                 <p>
-                  Good usability can guarantee successful adoption on new software.
+                  Simple layout can guarantee successful adoption on new software.
                 </p>
               </div>
             </div>
@@ -263,7 +262,7 @@
                   text-center
                 "
               >
-                <h2>Well organised</h2>
+                <h2>Well Organized</h2>
               </div>
               <div
                 class="
@@ -274,8 +273,7 @@
                 "
               >
                 <p>
-                  No more running around looking for things.When you write
-                  things and plan.
+                  No more keeping track of multiple lists. From shopping to tasks, everything is kept at your fingertips.
                 </p>
               </div>
             </div>

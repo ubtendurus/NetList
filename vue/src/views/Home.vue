@@ -1,5 +1,12 @@
 <template>
-  <div class="home">
+  <div class="home" >
+  <div class="py-6 bg-gray-100 flex justify-center">
+    <button class="mx-2 my-2 bg-white w-30 transition duration-150 ease-in-out hover:border-gray-900 hover:text-gray-900 rounded border border-gray-800 text-gray-800 px-16 py-4 text-xl">
+
+    <router-link :to="{ name: 'groups' }">Get Started</router-link>
+    </button>
+
+  </div>
     <!-- <h1>Home</h1>
     <p>You must be authenticated to see this</p> -->
     <front-1-component />

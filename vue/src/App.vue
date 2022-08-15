@@ -112,7 +112,7 @@
             "
           >
             <router-link
-              v-bind:to="{ name: 'creators' }"
+              v-bind:to="{ name: 'creator-view' }"
               v-if="$store.state.token != ''"
             >
               Creators

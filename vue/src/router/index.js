@@ -9,6 +9,7 @@ import Groups from '../views/Groups.vue'
 import ShoppingList from '../views/ShoppingList.vue'
 import ShowListItems from '../views/ShowListItems.vue'
 import EditItem from '../views/EditItem.vue'
+import Creators from '../views/Creators.vue'
 
 Vue.use(Router)
 
@@ -88,7 +89,16 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+    path: "/creators",
+    name: "creator-view",
+    component: Creators,
+    meta: {
+      requiresAuth: false
     }
+    }
+
   ]
 })
 
