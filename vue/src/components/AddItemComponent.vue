@@ -236,7 +236,8 @@ export default {
     createItem() {
       if (this.item.quantity >= 0) {
         itemService.createItem(this.item).then(() => {
-          this.$router.go(this.$router.currentRoute, {
+          this.$router.push({
+            name: "show-list-items",
             params: { listId: this.item.listId },
           });
         });
