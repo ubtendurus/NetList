@@ -16,5 +16,17 @@ export default {
     joinGroup(key) {
         const url = "/groups/join/" + key;
         return axios.post(url);
+    },
+    updateGroup(groupId, group) {
+        const url = "/groups/" + groupId;
+        return axios.put(url, group);
+    },
+    getGroupUsers(groupId) {
+      const url = "/users/groups/" + groupId;
+        return axios.get(url);
+    },
+  getGroupById(groupId) {
+    const url = "/groups/" + groupId;
+        return axios.get(url);
     }
 }

@@ -34,6 +34,7 @@
             rounded
             border
             shadow
+            placeholder:italic
           "
           v-model="item.itemName"
           required
@@ -57,6 +58,7 @@
         <input
           id="itemQuantity"
           class="
+            placeholder:italic
             text-gray-600
             dark:text-gray-400
             focus:outline-none focus:border focus:border-indigo-700
@@ -114,6 +116,7 @@
             rounded
             border
             shadow
+            placeholder:italic
           "
           name="itemNote"
           v-model="item.itemNote"
@@ -230,7 +233,9 @@ export default {
   methods: {
     createItem() {
       itemService.createItem(this.item).then(() => {
-        this.$router.go(this.$router.currentRoute, {params: {listId: this.item.listId}});
+        this.$router.go(this.$router.currentRoute, {
+          params: { listId: this.item.listId },
+        });
       });
     },
     assignCategoryId() {

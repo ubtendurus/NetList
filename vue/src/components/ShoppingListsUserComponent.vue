@@ -81,7 +81,7 @@
                         />
                       </div>
                       <div class="pl-3">
-                        <div class="flex items-center text-sm leading-none">
+                        <div class="flex items-center text-lg leading-none">
                           <p class="font-semibold text-gray-800">
                             <router-link
                               :to="{
@@ -94,7 +94,7 @@
                             >
                           </p>
                           <p class="text-indigo-700 ml-3">
-                            (Anything can come here)
+                            <!-- (Anything can come here) -->
                           </p>
                         </div>
                         <p
@@ -106,7 +106,7 @@
                             mt-2
                           "
                         >
-                          //TODO IDEA: Group Desc? Maybe
+                          <!-- //TODO IDEA: Group Desc? Maybe -->
                         </p>
                       </div>
                     </div>
@@ -134,7 +134,10 @@
                           "
                         >
                           <router-link
-                            :to="{ name: 'list', params: { groupId: list.id } }"
+                            :to="{
+                              name: 'edit-list',
+                              params: { listId: list.listId },
+                            }"
                             >Edit</router-link
                           >
                         </p>
@@ -152,7 +155,9 @@
                         "
                       >
                         <p class="text-xs leading-3 text-red-700">
-                          <button @click.prevent="deleteList(list.listId)">Delete</button>
+                          <button @click.prevent="deleteList(list.listId)">
+                            Delete
+                          </button>
                         </p>
                       </div>
                     </div>
@@ -214,8 +219,8 @@ export default {
           alert("Error deleting group");
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

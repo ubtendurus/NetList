@@ -52,8 +52,8 @@ public class GroupController {
 
     @PutMapping("/groups/{groupId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public boolean updateGroup(@PathVariable Long groupId, @RequestBody Group group) {
-        return groupDao.updateGroup(group);
+    public boolean updateGroup(@PathVariable Long groupId, @RequestBody Group group,Principal principal) {
+        return groupDao.updateGroup(group,principal);
     }
 
     @DeleteMapping("/groups/{groupId}")

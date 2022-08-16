@@ -9,7 +9,7 @@ public interface GroupDao {
 
     boolean createGroup(Group group, Principal principal);
 
-    boolean updateGroup(Group group);
+    boolean updateGroup(Group group,Principal principal);
 
     void deleteGroup(Long groupId,Principal principal);
 

@@ -10,6 +10,8 @@ import ShoppingList from '../views/ShoppingList.vue'
 import ShowListItems from '../views/ShowListItems.vue'
 import EditItem from '../views/EditItem.vue'
 import Creators from '../views/Creators.vue'
+import EditGroup from '../views/EditGroup.vue'
+import EditList from '../views/EditList.vue'
 
 Vue.use(Router)
 
@@ -86,6 +88,22 @@ const router = new Router({
       path: "/edititem/:itemId",
       name: "edit-item",
       component: EditItem,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/editgroup/:groupId",
+      name: "edit-group",
+      component: EditGroup,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/editlist/:listId",
+      name: "edit-list",
+      component: EditList,
       meta: {
         requiresAuth: true
       }

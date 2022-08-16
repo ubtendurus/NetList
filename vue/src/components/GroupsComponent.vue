@@ -152,7 +152,7 @@ export default {
     createGroup() {
       groupsService.create(this.groups).then((response) => {
         if (response.status === 201) {
-          this.$router.push({ name: "groups" });
+          this.$router.go(this.$router.currentRoute);
         }
         this.groups = response.data;
       });

@@ -167,17 +167,11 @@ export default {
   props: ["itemId"],
   data() {
     return {
-      selectedCategoryId: "",
       item: {
         itemName: "",
         itemDescription: "",
-        categoryId: "",
         quantity: "",
         itemNote: "",
-      },
-      categories: {
-        categoryId: "",
-        categoryName: "",
       },
     };
   },
@@ -187,14 +181,8 @@ export default {
         this.$router.go(-1);
       });
     },
-    assignCategoryId() {
-      this.item.categoryId = this.selectedCategoryId;
-    },
   },
   created() {
-    itemService.getAllCategories().then((response) => {
-      this.categories = response.data;
-    });
     itemService.getItemById(this.itemId).then((item) => {
       this.item = item.data;
       this.selectedCategoryId = this.item.categoryId;

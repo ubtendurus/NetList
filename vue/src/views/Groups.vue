@@ -1,6 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8">
-    <div class="groups">
+    <div class="groups w-1/2">
       <div
         class="
           flex
@@ -102,23 +102,28 @@
           justify-center
           px-6
           py-3
+          mr-auto
+          ml-auto
+          mt-5
         "
       >
         <form id="joinGroupForm" @submit.prevent="joinGroup()">
-          <!-- <label
-          for="groupKey"
-          class="
-            text-gray-800
-            dark:text-gray-100
-            text-sm
-            font-bold
-            leading-tight
-            tracking-normal
-            mb-2
-          "
-        >
-          Group Key</label
-        > -->
+          <label
+            for="groupKey"
+            class="
+              text-gray-800
+              dark:text-gray-100
+              text-base
+              font-bold
+              leading-tight
+              tracking-normal
+              mb-2
+              mr-auto
+              ml-auto
+            "
+          >
+            Invite Code</label
+          >
           <input
             id="groupKey"
             class="
@@ -138,13 +143,15 @@
               rounded
               border
               shadow
+              mr-auto
+              ml-auto
+              mb-5
             "
             v-model="groups.groupKey"
             required
             autofocus
             placeholder="Invite Code"
           />
-
           <button
             type="submit"
             class="
@@ -163,6 +170,7 @@
               border
               rounded
               border-gray-100
+              mb-5
             "
           >
             <p
@@ -225,7 +233,7 @@ export default {
     joinGroup() {
       groupsService.joinGroup(this.groups.groupKey).then((response) => {
         if (response.status === 202) {
-          this.$router.push({ name: "groups" });
+          this.$router.go(this.$router.currentRoute);
         }
         this.groups = response.data;
       });

@@ -8,7 +8,10 @@
         <div class="px-6 pt-6 overflow-x-auto">
           <table class="w-full whitespace-nowrap">
             <tbody v-for="group in groups" class="group" v-bind:key="group.id">
-              <tr tabindex="0" class="focus:outline-none border-b border-gray-200">
+              <tr
+                tabindex="0"
+                class="focus:outline-none border-b border-gray-200"
+              >
                 <td class="p-4">
                   <div class="flex items-center">
                     <div class="bg-gray-100 rounded-sm p-2.5">
@@ -34,8 +37,7 @@
                           text-indigo-700
                         "
                       >
-                          Invite Code: {{ group.groupKey }}
-                        
+                        Invite Code: {{ group.groupKey }}
                       </p>
                     </div>
                   </div>
@@ -63,7 +65,10 @@
                         "
                       >
                         <router-link
-                          :to="{ name: 'group', params: { groupId: group.id } }"
+                          :to="{
+                            name: 'edit-group',
+                            params: { groupId: group.groupId },
+                          }"
                           >Edit</router-link
                         >
                       </p>

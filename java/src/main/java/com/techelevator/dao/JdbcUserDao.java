@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -84,14 +85,17 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public List<User> getUsersByGroupId(Long groupId) {
+    public List<User> getUsersByGroupId(Long groupId, Principal principal) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE user_id = " +
-                "(SELECT user_id FROM group_user WHERE group_id = ?)";
+        //get multiple users by group id
+
+        String sql = "SELECT * FROM users WHERE user_id in (SELECT user_id FROM group_user WHERE group_id = ?)";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, groupId);
         while (results.next()) {
             User user = mapRowToUser(results);
-            users.add(user);
+            if(user.getId() != findIdByUsername(principal.getName())) {
+                users.add(user);
+            }
         }
         return users;
     }

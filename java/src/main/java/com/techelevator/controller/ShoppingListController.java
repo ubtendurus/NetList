@@ -49,5 +49,10 @@ public class ShoppingListController {
         shoppingListDao.deleteList(listId);
     }
 
+    @GetMapping("/shoppinglists/{listId}")
+    public ShoppingList getListById(@PathVariable Long listId) {
+        return shoppingListDao.getListById(listId);
+    }
+
 
 }

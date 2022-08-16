@@ -1,6 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8">
-    <div>
+    <div class="w-1/2">
       <div
         class="
           flex
@@ -16,16 +16,16 @@
           class="
             focus:outline-none
             text-2xl
-            lg:text-xl
+            lg:text-2xl
             font-semibold
             leading-tight
             text-gray-800
             mr-8
           "
         >
-          {{getListName(listId).listName}}
+          {{ getListName(listId).listName }}
         </p>
-        
+
         <button
           @click="
             showAddItem = !showAddItem;
@@ -73,19 +73,6 @@
       >
         <add-item-component v-bind:listId="listId" />
       </div>
-      <div
-        v-if="showTransferList"
-        class="
-          flex
-          items-center
-          border-b border-gray-200
-          justify-between
-          px-6
-          py-3
-        "
-      >
-        <transfer-list-component v-bind:listId="listId" :groupId="groupId" />
-      </div>
       <show-list-items-component v-bind:listId="listId" />
     </div>
   </body>
@@ -94,7 +81,6 @@
 <script>
 import ShowListItemsComponent from "@/components/ShowListItemsComponent.vue";
 import AddItemComponent from "@/components/AddItemComponent.vue";
-import TransferListComponent from "@/components/TransferListComponent.vue";
 import ShoppingListsService from "@/services/ShoppingListsService.js";
 
 export default {
@@ -102,33 +88,35 @@ export default {
   components: {
     AddItemComponent,
     ShowListItemsComponent,
-    TransferListComponent,
   },
   data() {
     return {
+      listName: "",
       showAddItem: false,
       showTransferList: false,
       listId: 0,
       groupId: 0,
-      lists: []
+      lists: [],
     };
   },
   created() {
     this.listId = this.$route.params.listId;
     this.groupId = this.$route.params.groupId;
-    ShoppingListsService.getAll().then(
-      (response) => 
-        {this.lists = response.data
-        })
+    this.getAllLists();
+    //list name
+    //this.listName = this.getListName(this.listId).listName;
   },
   methods: {
+    //get list name and set list name
     getListName(listId) {
-      return this.lists.find(
-        (x) => 
-      x.listId === listId
-      )
-    }
-  }
+      return this.lists.find((list) => list.listId == listId);
+    },
+    getAllLists() {
+      ShoppingListsService.getAll().then((response) => {
+        this.lists = response.data;
+      });
+    },
+  },
 };
 </script>
 

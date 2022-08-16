@@ -1,7 +1,7 @@
 <template>
   <!--list shopping list-->
   <body class="flex items-center justify-center py-8">
-    <div class="shoppinglist">
+    <div class="shoppinglist w-1/2">
       <div
         class="
           flex

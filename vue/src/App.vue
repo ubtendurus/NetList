@@ -28,7 +28,8 @@
               flex
               xl:flex
               items-center
-              text-sm text-indigo-500
+              text-sm text-white
+              hover:text-indigo-500
               tracking-normal
             "
           >
@@ -62,7 +63,11 @@
           </li>
           <li class="mx-0 mx-12 cursor-pointer flex">
             <router-link v-bind:to="{ name: 'home' }">
-              <img src = "https://img.icons8.com/clouds/344/checklist.png" width=43px height=44px />
+              <img
+                src="https://img.icons8.com/clouds/344/checklist.png"
+                width="43px"
+                height="44px"
+              />
             </router-link>
           </li>
           <li

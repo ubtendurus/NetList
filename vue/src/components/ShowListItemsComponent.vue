@@ -6,9 +6,20 @@
         v-if="items.length != 0"
       >
         <div class="px-6 pt-2 overflow-x-auto">
-          <div class="flex items-center justify-end border-b border-gray-200 p-2">
+          <div
+            class="flex items-center justify-end border-b border-gray-200 p-2"
+          >
             <button
-              class="text-lrg font-semibold leading-none text-right rounded border border-gray-800 px-2 py-2"
+              class="
+                text-lrg
+                font-semibold
+                leading-none
+                text-right
+                rounded
+                border border-gray-800
+                px-2
+                py-2
+              "
               :class="{ 'text-gray-600': markAll, 'text-green-800': !markAll }"
               @click.prevent="markAllDone()"
             >
@@ -17,7 +28,10 @@
           </div>
           <table class="w-full whitespace-nowrap">
             <tbody v-for="item in items" class="group" v-bind:key="item.itemId">
-              <tr tabindex="0" class="focus:outline-none border-b border-gray-200">
+              <tr
+                tabindex="0"
+                class="focus:outline-none border-b border-gray-200"
+              >
                 <td class="p-5">
                   <div class="flex items-center">
                     <div class="bg-gray-100 rounded-sm p-2.5">
@@ -30,7 +44,7 @@
                     <div class="pl-3">
                       <div class="flex items-center text-sm leading-none">
                         <p
-                          class="font-semibold text-gray-800 text-base"
+                          class="font-semibold text-gray-800 text-lg"
                           :class="{ itemchecked: item.purchased }"
                         >
                           <router-link
@@ -46,7 +60,7 @@
                           >
                         </p>
                         <p
-                          class="text-indigo-700 ml-12"
+                          class="text-indigo-700 ml-10"
                           :class="{ itemchecked: item.purchased }"
                         >
                           Quantity: {{ item.quantity }}
@@ -65,14 +79,8 @@
                         Note : {{ item.itemNote }}
                       </p>
                       <p
-                        class="
-                          text-xs
-                          md:text-sm
-                          leading-none
-                          text-gray-600
-                          
-                        "
-                          :class="{ itemchecked: item.purchased }"
+                        class="text-xs md:text-sm leading-none text-gray-600"
+                        :class="{ itemchecked: item.purchased }"
                       >
                         Category :
                         {{ getCategoryName(item.categoryId).categoryName }}
@@ -100,7 +108,6 @@
                           font-semibold
                           leading-none
                           text-right text-green-800
-                  
                         "
                         :class="{ itemchecked_button: item.purchased }"
                       >
@@ -112,9 +119,32 @@
                           @change.prevent="updateItem"
                         />
                       </p>
-                      <p class="ml-3 text-xs leading-3 text-green-700 cursor-pointer" for="isPurchased" v-if="item.purchased"> Done!</p>
-                      <p class="ml-3 text-xs leading-3 text-green-700 cursor-pointer" for="isPurchased" v-else> Done?</p>
-                      
+                      <p
+                        class="
+                          ml-3
+                          text-xs
+                          leading-3
+                          text-green-700
+                          cursor-pointer
+                        "
+                        for="isPurchased"
+                        v-if="item.purchased"
+                      >
+                        Done!
+                      </p>
+                      <p
+                        class="
+                          ml-3
+                          text-xs
+                          leading-3
+                          text-green-700
+                          cursor-pointer
+                        "
+                        for="isPurchased"
+                        v-else
+                      >
+                        Done?
+                      </p>
                     </div>
 
                     <div
