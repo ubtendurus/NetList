@@ -237,7 +237,7 @@ export default {
     joinGroup() {
       groupsService.joinGroup(this.groups.groupKey).then((response) => {
         if (response.status === 202) {
-          this.$router.push("/groups");
+          this.$router.go(this.$router.currentRoute);
         }
         this.groups = response.data;
       });
