@@ -18,7 +18,7 @@
                       <img
                         width="28px"
                         height="28px"
-                        src="..\assets\imgs\icons8-checklist-100.png"
+                        src="https://img.icons8.com/clouds/344/checklist.png"
                       />
                     </div>
                     <div class="pl-3">
