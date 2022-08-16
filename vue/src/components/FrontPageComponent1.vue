@@ -5,16 +5,16 @@
         <div class="flex justify-center items-center flex-col">
           <div
             class="
-              lg:text-6xl
-              md:text-5xl
-              text-4xl
+              lg:text-5xl
+              md:text-4xl
+              text-3xl
               font-black
               leading-10
               text-center text-gray-800
               dark:text-white
             "
           >
-            <h1>NetList features</h1>
+            <h1>Features</h1>
           </div>
           <div
             class="

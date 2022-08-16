@@ -14,11 +14,11 @@
               >
                 <td class="p-4">
                   <div class="flex items-center">
-                    <div class="bg-gray-100 rounded-sm p-2.5">
+                    <div class=" rounded-sm p-1.5">
                       <img
-                        width="28px"
-                        height="28px"
-                        src="https://img.icons8.com/clouds/344/checklist.png"
+                        width="36px"
+                        height="36px"
+                        src="https://img.icons8.com/clouds/452/group.png"
                       />
                     </div>
                     <div class="pl-3">
@@ -44,6 +44,12 @@
                 </td>
                 <td class="pl-16">
                   <div v-if="group.ownerId === $store.state.user.id">
+                    <router-link
+                          :to="{
+                            name: 'edit-group',
+                            params: { groupId: group.groupId },
+                          }"
+                          >
                     <div
                       class="
                         flex
@@ -64,15 +70,11 @@
                           text-right text-green-800
                         "
                       >
-                        <router-link
-                          :to="{
-                            name: 'edit-group',
-                            params: { groupId: group.groupId },
-                          }"
-                          >Edit</router-link
-                        >
+                        Edit
                       </p>
                     </div>
+                    </router-link
+                        >
                     <div
                       class="
                         flex
@@ -83,11 +85,13 @@
                         mt-2
                         bg-red-100
                         rounded-full
+                        cursor-pointer
                       "
+                      @click.self="deleteGroup(group.groupId)"
                     >
                       <p
                         class="text-xs leading-3 text-red-700 cursor-pointer"
-                        @click.self="deleteGroup(group.groupId)"
+                        
                       >
                         Delete
                       </p>
@@ -104,7 +108,8 @@
                         mt-2
                         bg-red-100
                         rounded-full
-                      "
+                        cursor-pointer"
+                        @click.self="deleteGroup(group.groupId)"
                     >
                       <p
                         class="text-xs leading-3 text-red-700 cursor-pointer"

@@ -14,7 +14,7 @@
           ml-auto
           mr-auto
         "
-        >Select a Group:</label
+        >Select a Group to Display Its Lists:</label
       >
       <select
         name="group"
@@ -63,20 +63,20 @@
       </select>
       <div class="w-full max-w-2xl px-4" v-if="selectedGroupId != 0">
         <div class="border rounded-lg border pb-6 border-gray-200">
-          <div class="px-6 pt-6 overflow-x-auto">
-            <table class="w-full whitespace-nowrap">
+          <div class="px-6 pt-6 overflow-x-auto ">
+            <table class="w-full whitespace-nowrap ">
               <tbody
                 v-for="list in filterListsbyGroupId"
                 v-bind:key="list.listId"
                 class="group"
               >
-                <tr tabindex="0" class="focus:outline-none">
+                <tr tabindex="0" class="focus:outline-none border-b border-gray-200">
                   <td>
                     <div class="flex items-center">
-                      <div class="bg-gray-100 rounded-sm p-2.5">
+                      <div class="rounded-sm p-1.5">
                         <img
-                          width="28px"
-                          height="28px"
+                          width="36px"
+                          height="36px"
                           src="https://img.icons8.com/clouds/344/checklist.png"
                         />
                       </div>
@@ -113,6 +113,11 @@
                   </td>
                   <td class="pl-16">
                     <div>
+                      <router-link
+                            :to="{
+                              name: 'edit-list',
+                              params: { listId: list.listId },
+                            }">
                       <div
                         class="
                           flex
@@ -133,15 +138,13 @@
                             text-right text-green-800
                           "
                         >
-                          <router-link
-                            :to="{
-                              name: 'edit-list',
-                              params: { listId: list.listId },
-                            }"
-                            >Edit</router-link
-                          >
+                          
+                            Edit
                         </p>
                       </div>
+                      </router-link
+                          >
+                      <button>
                       <div
                         class="
                           flex
@@ -152,14 +155,16 @@
                           mt-2
                           bg-red-100
                           rounded-full
+                          cursor: pointer;
                         "
                       >
-                        <p class="text-xs leading-3 text-red-700">
-                          <button @click.prevent="deleteList(list.listId)">
+                      
+                        <p class="text-xs leading-3 text-red-700 cursor-pointer">
+                          
                             Delete
-                          </button>
                         </p>
                       </div>
+                      </button>
                     </div>
                   </td>
                 </tr>

@@ -14,7 +14,7 @@
               tracking-normal
               mb-2
             "
-            >Group Name</label
+            >Change Group Name:</label
           >
           <input
             id="groupName"
@@ -39,11 +39,11 @@
               rounded
               border
               shadow
+              mt-2
             "
           />
           <br />
-          <div v-if="users.length != 0">
-            <label
+          <label
               for="groupOwner"
               class="
                 text-gray-800
@@ -54,8 +54,9 @@
                 tracking-normal
                 mb-2
               "
-              >Group Owner</label
+              >Assign New Group Owner:</label
             >
+          <div v-if="users.length > 0">
             <select
               id="groupOwner"
               class="
@@ -87,7 +88,7 @@
             </select>
           </div>
           <div v-else>
-            <p class="text-lg text-red-500 text-center">No Member Found</p>
+            <p class="text-base text-red-500 text-center mt-2">No Other Members In Group</p>
           </div>
           <button
             type="submit"
@@ -97,8 +98,8 @@
               mr-auto
               focus:outline-none
               focus:ring-2
-              focus:ring-indigo-700
-              focus:bg-indigo-50
+              focus:ring-indigo-400
+              focus:bg-indigo-400
               flex
               cursor-pointer
               items-center
@@ -108,6 +109,8 @@
               border
               rounded
               border-gray-100
+              bg-indigo-500
+              text-white
             "
           >
             Update Group

@@ -89,8 +89,8 @@
             mr-auto
             focus:outline-none
             focus:ring-2
-            focus:ring-indigo-700
-            focus:bg-indigo-50
+            focus:ring-indigo-400
+            focus:bg-indigo-400
             flex
             cursor-pointer
             items-center
@@ -100,6 +100,7 @@
             border
             rounded
             border-gray-100
+            bg-indigo-500
           "
         >
           <p
@@ -108,10 +109,10 @@
               text-xs
               md:text-sm
               leading-none
-              text-gray-600
+              text-white
             "
           >
-            Create Group
+            Create
           </p>
         </button>
       </div>

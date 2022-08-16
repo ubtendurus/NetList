@@ -38,6 +38,7 @@
           "
           v-model="item.itemName"
           required
+          maxlength="35"
           autofocus
           placeholder="Item Name"
         />
@@ -122,6 +123,7 @@
           v-model="item.itemNote"
           placeholder="Item Note"
           required
+          maxlength="20"
           autofocus
           type="text"
         />
@@ -232,11 +234,15 @@ export default {
   },
   methods: {
     createItem() {
-      itemService.createItem(this.item).then(() => {
-        this.$router.go(this.$router.currentRoute, {
-          params: { listId: this.item.listId },
+      if (this.item.quantity >= 0) {
+        itemService.createItem(this.item).then(() => {
+          this.$router.go(this.$router.currentRoute, {
+            params: { listId: this.item.listId },
+          });
         });
-      });
+      } else {
+        alert("Quantity must be greater than 0");
+      }
     },
     assignCategoryId() {
       this.item.categoryId = this.selectedCategoryId;

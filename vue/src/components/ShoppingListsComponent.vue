@@ -13,7 +13,7 @@
             tracking-normal
             mb-2
           "
-          >List Name</label
+          >List Name:</label
         >
         <input
           id="listName"
@@ -52,7 +52,7 @@
             tracking-normal
             mb-2
           "
-          >Select Group</label
+          >Select Group to Create List For:</label
         >
         <select
           id="groups"
@@ -94,8 +94,8 @@
             mr-auto
             focus:outline-none
             focus:ring-2
-            focus:ring-indigo-700
-            focus:bg-indigo-50
+            focus:ring-indigo-400
+            focus:bg-indigo-400
             flex
             cursor-pointer
             items-center
@@ -105,6 +105,7 @@
             border
             rounded
             border-gray-100
+            bg-indigo-500
           "
         >
           <p
@@ -113,10 +114,10 @@
               text-xs
               md:text-sm
               leading-none
-              text-gray-600
+              text-white
             "
           >
-            Create List
+            Create
           </p>
         </button>
       </div>

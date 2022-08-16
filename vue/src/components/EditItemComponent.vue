@@ -177,9 +177,13 @@ export default {
   },
   methods: {
     updateItem() {
-      itemService.updateItem(this.itemId, this.item).then(() => {
-        this.$router.go(-1);
-      });
+      if (this.item.quantity >= 0) {
+        itemService.updateItem(this.itemId, this.item).then(() => {
+          this.$router.go(-1);
+        });
+      } else {
+        alert("Quantity must be greater than 0");
+      }
     },
   },
   created() {

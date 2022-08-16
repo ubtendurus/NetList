@@ -1,6 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8">
-    <div class="w-full max-w-2xl px-4">
+    <div class="w-full max-w-7xl px-4">
       <div
         class="border rounded-lg border pb-6 border-gray-200"
         v-if="items.length != 0"
@@ -34,11 +34,11 @@
               >
                 <td class="p-5">
                   <div class="flex items-center">
-                    <div class="bg-gray-100 rounded-sm p-2.5">
+                    <div class="rounded-sm p-1.5">
                       <img
-                        width="28px"
-                        height="28px"
-                        src="https://img.icons8.com/clouds/344/checklist.png"
+                        width="56px"
+                        height="56px"
+                        src="https://img.icons8.com/clouds/452/forward.png"
                       />
                     </div>
                     <div class="pl-3">

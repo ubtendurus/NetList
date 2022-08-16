@@ -18,7 +18,7 @@
           viewBox="0 0 188 74"
           fill="none"
           style="border-radius: 1000px"
-          src="https://img.icons8.com/clouds/344/checklist.png"
+          src="https://img.icons8.com/clouds/452/edit-file.png"
         />
         <div
           class="bg-white shadow rounded lg:w-1/3 md:w-1/2 w-full p-10 mt-16"

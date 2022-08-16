@@ -16,7 +16,7 @@
           class="
             focus:outline-none
             text-sm
-            lg:text-xl
+            lg:text-3xl
             font-semibold
             leading-tight
             text-gray-800
@@ -32,8 +32,8 @@
           class="
             focus:outline-none
             focus:ring-2
-            focus:ring-indigo-700
-            focus:bg-indigo-50
+            focus:ring-indigo-400
+            focus:bg-indigo-400
             flex
             cursor-pointer
             items-center
@@ -45,6 +45,8 @@
             border-gray-100
             ml-10
             mr-10
+            bg-indigo-500
+            text-white
           "
         >
           <p
@@ -53,7 +55,7 @@
               text-xs
               md:text-sm
               leading-none
-              text-gray-600
+              text-white
             "
           >
             Create Group
@@ -67,8 +69,8 @@
           class="
             focus:outline-none
             focus:ring-2
-            focus:ring-indigo-700
-            focus:bg-indigo-50
+            focus:ring-green-500
+            focus:bg-green-500
             flex
             cursor-pointer
             items-center
@@ -78,6 +80,7 @@
             border
             rounded
             border-gray-100
+            bg-green-600
           "
         >
           <p
@@ -86,7 +89,7 @@
               text-xs
               md:text-sm
               leading-none
-              text-gray-600
+              text-white
             "
           >
             Join Group
@@ -159,8 +162,8 @@
               mr-auto
               focus:outline-none
               focus:ring-2
-              focus:ring-indigo-700
-              focus:bg-indigo-50
+              focus:ring-green-500
+              focus:bg-green-500
               flex
               cursor-pointer
               items-center
@@ -171,6 +174,7 @@
               rounded
               border-gray-100
               mb-5
+              bg-green-600
             "
           >
             <p
@@ -179,10 +183,10 @@
                 text-xs
                 md:text-sm
                 leading-none
-                text-gray-600
+                text-white
               "
             >
-              Join Group
+              Join
             </p>
           </button>
         </form>
