@@ -37,8 +37,9 @@
           "
           v-model="groups.groupName"
           required
+          maxlength="25"
           autofocus
-          placeholder="Group Name"
+          placeholder="Enter a name for your new group"
         />
         <br />
         <label

@@ -19,8 +19,9 @@
                 border border-gray-800
                 px-2
                 py-2
+                text-white
               "
-              :class="{ 'text-gray-600': markAll, 'text-green-800': !markAll }"
+              :class="{ 'text-white bg-red-700': markAll, 'text-white bg-green-600': !markAll }"
               @click.prevent="markAllDone()"
             >
               {{ markAll ? "Mark All Undone" : "Mark All Done" }}
@@ -113,6 +114,7 @@
                       >
                         <input
                           type="checkbox"
+                          class="cursor-pointer"
                           id="isPurchased"
                           :value="item.itemId"
                           v-model="item.purchased"
@@ -123,9 +125,9 @@
                         class="
                           ml-3
                           text-xs
+                          font-semibold
                           leading-3
                           text-green-700
-                          cursor-pointer
                         "
                         for="isPurchased"
                         v-if="item.purchased"
@@ -136,9 +138,9 @@
                         class="
                           ml-3
                           text-xs
+                          font-semibold
                           leading-3
                           text-green-700
-                          cursor-pointer
                         "
                         for="isPurchased"
                         v-else
@@ -157,13 +159,17 @@
                         mt-2
                         bg-red-100
                         rounded-full
+                        text-xs
+                        font-semibold
+                        cursor-pointer
                       "
+                      @click.self="deleteItem(item.itemId)"
                     >
                       <p
                         class="text-xs leading-3 text-red-700 cursor-pointer"
                         @click.self="deleteItem(item.itemId)"
                       >
-                        Delete
+                        Delete Item
                       </p>
                     </div>
                   </div>

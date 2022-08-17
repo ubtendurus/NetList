@@ -13,7 +13,7 @@
             tracking-normal
             mb-2
           "
-          >List Name:</label
+          >New List Name:</label
         >
         <input
           id="listName"
@@ -38,7 +38,8 @@
           v-model="lists.listName"
           required
           autofocus
-          placeholder="List Name"
+          maxlength="30"
+          placeholder="New List Name"
         />
         <br />
         <label

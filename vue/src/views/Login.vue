@@ -33,7 +33,7 @@
             Login to your account
           </p>
           <p class="text-sm mt-4 font-medium leading-none text-gray-500">
-            Dont have account?
+            Don't have an account?
             <router-link :to="{ name: 'register' }"
               ><span
                 tabindex="0"
@@ -122,7 +122,7 @@
                     mt-2
                   "
                 />
-                <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
+                <!-- <div class="absolute right-0 mt-2 mr-3 cursor-pointer">
                   <svg
                     width="16"
                     height="16"
@@ -135,7 +135,7 @@
                       fill="#71717A"
                     />
                   </svg>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="mt-8">

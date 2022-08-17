@@ -64,13 +64,13 @@
                     >
                       <p
                         class="
-                          text-sm
+                          text-xs
                           font-semibold
                           leading-none
                           text-right text-green-800
                         "
                       >
-                        Edit
+                        Edit Group Name & Owner
                       </p>
                     </div>
                     </router-link
@@ -90,10 +90,10 @@
                       @click.self="deleteGroup(group.groupId)"
                     >
                       <p
-                        class="text-xs leading-3 text-red-700 cursor-pointer"
-                        
+                        class="text-xs font-semibold leading-3 text-red-700 cursor-pointer"
+                        @click.self="deleteGroup(group.groupId)"
                       >
-                        Delete
+                        Delete Group
                       </p>
                     </div>
                   </div>
@@ -115,7 +115,7 @@
                         class="text-xs leading-3 text-red-700 cursor-pointer"
                         @click.self="deleteGroup(group.groupId)"
                       >
-                        Leave
+                        Leave Group
                       </p>
                     </div>
                   </div>

@@ -21,7 +21,8 @@
             v-model="list.listName"
             required
             autofocus
-            placeholder="List Name"
+            maxlength="30"
+            placeholder="Enter a new name for the list"
             class="
               text-gray-600
               dark:text-gray-400
@@ -50,8 +51,8 @@
               mr-auto
               focus:outline-none
               focus:ring-2
-              focus:ring-indigo-700
-              focus:bg-indigo-50
+              focus:ring-indigo-400
+              focus:bg-indigo-400
               flex
               cursor-pointer
               items-center
@@ -61,6 +62,8 @@
               border
               rounded
               border-gray-100
+              bg-indigo-500
+              text-white
             "
           >
             Update List
@@ -85,7 +88,8 @@ export default {
     updateList() {
       ShoppingListsService.updateList(this.listId, this.list).then(() => {
         this.$router.push({
-          name: "show-list-items",
+          // name: "show-list-items",
+          name: "shopping-lists",
           params: { listId: this.listId },
         });
       });

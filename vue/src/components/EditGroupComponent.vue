@@ -21,7 +21,7 @@
             v-model="group.groupName"
             required
             autofocus
-            placeholder="Group Name"
+            placeholder="Enter a new name for the group"
             class="
               text-gray-600
               dark:text-gray-400
@@ -41,6 +41,7 @@
               shadow
               mt-2
             "
+            maxlength="25"
           />
           <br />
           <label

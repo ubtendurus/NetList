@@ -63,6 +63,19 @@
       </select>
       <div class="w-full max-w-2xl px-4" v-if="selectedGroupId != 0">
         <div class="border rounded-lg border pb-6 border-gray-200">
+          <p v-if="filterListsbyGroupId.length === 0"
+          class="
+            text-gray-400
+            dark:text-gray-100
+            text-sm
+            leading-tight
+            tracking-normal
+            ml-3
+            mr-3
+            mt-12
+            text-align-center
+            text-justify-center
+          "> Your lists will display here after creating them! </p>
           <div class="px-6 pt-6 overflow-x-auto ">
             <table class="w-full whitespace-nowrap ">
               <tbody
@@ -132,14 +145,14 @@
                       >
                         <p
                           class="
-                            text-sm
+                            text-xs
                             font-semibold
                             leading-none
                             text-right text-green-800
                           "
                         >
                           
-                            Edit
+                            Edit List Name
                         </p>
                       </div>
                       </router-link
@@ -156,12 +169,15 @@
                           bg-red-100
                           rounded-full
                           cursor: pointer;
+                          mb-2
                         "
+                      
                       >
                       
-                        <p class="text-xs leading-3 text-red-700 cursor-pointer">
+                        <p class="text-xs font-semibold leading-3 text-red-700 cursor-pointer px-7"
+                        @click.self="deleteList(list.listId)">
                           
-                            Delete
+                            Delete List
                         </p>
                       </div>
                       </button>
