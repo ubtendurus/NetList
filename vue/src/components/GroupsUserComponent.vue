@@ -1,6 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8">
-    <div class="w-full max-w-2xl px-4">
+    <div class="w-full max-w-5xl px-4">
       <div
         class="border rounded-lg border pb-6 border-gray-200"
         v-if="groups.length != 0"
@@ -14,7 +14,7 @@
               >
                 <td class="p-4">
                   <div class="flex items-center">
-                    <div class=" rounded-sm p-1.5">
+                    <div class="rounded-sm p-1.5">
                       <img
                         width="36px"
                         height="36px"
@@ -24,7 +24,9 @@
                     <div class="pl-3">
                       <div class="flex items-center text-lg leading-none">
                         <p class="font-semibold text-gray-800">
-                          {{ group.groupName }}
+                          <router-link :to="{ name: 'shopping-lists' }">
+                            {{ group.groupName }}
+                          </router-link>
                         </p>
                       </div>
                       <p
@@ -45,36 +47,35 @@
                 <td class="pl-16">
                   <div v-if="group.ownerId === $store.state.user.id">
                     <router-link
-                          :to="{
-                            name: 'edit-group',
-                            params: { groupId: group.groupId },
-                          }"
-                          >
-                    <div
-                      class="
-                        flex
-                        items-center
-                        justify-center
-                        px-2
-                        py-1
-                        mt-2
-                        bg-green-100
-                        rounded-full
-                      "
+                      :to="{
+                        name: 'edit-group',
+                        params: { groupId: group.groupId },
+                      }"
                     >
-                      <p
+                      <div
                         class="
-                          text-xs
-                          font-semibold
-                          leading-none
-                          text-right text-green-800
+                          flex
+                          items-center
+                          justify-center
+                          px-2
+                          py-1
+                          mt-2
+                          bg-green-100
+                          rounded-full
                         "
                       >
-                        Edit Group Name & Owner
-                      </p>
-                    </div>
-                    </router-link
+                        <p
+                          class="
+                            text-xs
+                            font-semibold
+                            leading-none
+                            text-right text-green-800
+                          "
                         >
+                          Edit Group Name & Owner
+                        </p>
+                      </div>
+                    </router-link>
                     <div
                       class="
                         flex
@@ -90,7 +91,13 @@
                       @click.self="deleteGroup(group.groupId)"
                     >
                       <p
-                        class="text-xs font-semibold leading-3 text-red-700 cursor-pointer"
+                        class="
+                          text-xs
+                          font-semibold
+                          leading-3
+                          text-red-700
+                          cursor-pointer
+                        "
                         @click.self="deleteGroup(group.groupId)"
                       >
                         Delete Group
@@ -108,11 +115,18 @@
                         mt-2
                         bg-red-100
                         rounded-full
-                        cursor-pointer"
-                        @click.self="deleteGroup(group.groupId)"
+                        cursor-pointer
+                      "
+                      @click.self="deleteGroup(group.groupId)"
                     >
                       <p
-                        class="text-xs leading-3 text-red-700 cursor-pointer"
+                        class="
+                          text-xs
+                          font-semibold
+                          leading-3
+                          text-red-700
+                          cursor-pointer
+                        "
                         @click.self="deleteGroup(group.groupId)"
                       >
                         Leave Group

@@ -38,7 +38,7 @@
           v-model="item.itemName"
           required
           autofocus
-          maxlength="35"
+          maxlength="20"
           placeholder="Item Name"
         />
         <br />

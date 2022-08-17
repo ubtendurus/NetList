@@ -21,7 +21,7 @@
             v-model="list.listName"
             required
             autofocus
-            maxlength="30"
+            maxlength="25"
             placeholder="Enter a new name for the list"
             class="
               text-gray-600

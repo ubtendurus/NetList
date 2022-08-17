@@ -1,6 +1,20 @@
 <template>
   <body class="flex items-center justify-center py-8">
+    
     <div class="w-full max-w-7xl px-4">
+      <p v-if="selectedGroupId != 0" class="
+          text-gray-600
+          dark:text-gray-100
+          text-base
+          font-semibold
+          leading-tight
+          tracking-normal
+          mb-2
+          ml-auto
+          mr-auto
+          text-center
+          "
+          > <em>Click on an item to edit its details.</em> </p>
       <div
         class="border rounded-lg border pb-6 border-gray-200"
         v-if="items.length != 0"

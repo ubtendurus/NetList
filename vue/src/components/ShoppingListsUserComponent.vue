@@ -61,7 +61,18 @@
           {{ group.groupName }}
         </option>
       </select>
-      <div class="w-full max-w-2xl px-4" v-if="selectedGroupId != 0">
+      <p v-if="selectedGroupId != 0" class="
+          text-gray-600
+          dark:text-gray-100
+          text-base
+          font-semibold
+          leading-tight
+          tracking-normal
+          mb-2
+          ml-auto
+          mr-auto"
+          > <em>Click on a list to see its items.</em> </p>
+      <div class="w-full max-w-5xl px-4" v-if="selectedGroupId != 0">
         <div class="border rounded-lg border pb-6 border-gray-200">
           <p v-if="filterListsbyGroupId.length === 0"
           class="

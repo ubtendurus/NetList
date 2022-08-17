@@ -17,7 +17,17 @@
       >
         <div class="flex items-center">
           <div
-            class="rounded-full relative p-3 flex justify-end leading-10 font-bold text-white text-xl">
+            class="
+              rounded-full
+              relative
+              p-3
+              flex
+              justify-end
+              leading-10
+              font-bold
+              text-white text-xl
+            "
+          >
             NetList
           </div>
         </div>
@@ -46,10 +56,8 @@
               hover:text-indigo-500
               cursor-pointer
               h-full
-              xl:flex
               items-center
               text-sm text-white
-              xl:ml-10
               ml-10
               tracking-normal
               relative
@@ -95,6 +103,7 @@
             class="
               hover:text-indigo-500
               cursor-pointer
+              mr-10
               h-full
               xl:flex
               flex
@@ -121,7 +130,6 @@
             flex
             items-center
             justify-end
-            hidden
             relative
           "
         >
@@ -139,7 +147,6 @@
                 items-center
                 text-sm text-white
                 tracking-normal
-                hidden
               "
             >
               Logout

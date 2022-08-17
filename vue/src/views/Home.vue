@@ -23,7 +23,7 @@
         />
         NetList
       </div>
-      <div class="ml-auto mr-auto">
+      <div class="ml-auto mr-auto hover:bg-blue-100 rounded-xl">
         <router-link :to="{ name: 'groups' }">
           <button
             class="

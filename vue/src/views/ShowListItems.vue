@@ -61,6 +61,7 @@
           </p>
         </button>
       </div>
+      
       <div
         v-if="showAddItem"
         class="
@@ -74,6 +75,7 @@
       >
         <add-item-component v-bind:listId="listId" />
       </div>
+      
       <show-list-items-component v-bind:listId="listId" />
     </div>
   </body>

@@ -76,9 +76,7 @@
       </div>
       <div class="lg:w-96 w-80">
         <img
-          src="https://media-exp1.licdn.com/dms/image/C5603AQGnpRhnpwRyhw/profile-displayphoto-shrink_800_800/0/1655297026199?e=1666224000&v=beta&t=dmF8OvC7TOIgSwXYDifm8P7c1q79DN1mnOyC45kwLyY
-
-"
+          src="https://i.imgur.com/jxusUB4.png"
           class="h-72 w-full object-cover object-center rounded-t-md"
           alt="Seth Post"
         />

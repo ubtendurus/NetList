@@ -38,7 +38,7 @@
           "
           v-model="item.itemName"
           required
-          maxlength="35"
+          maxlength="20"
           autofocus
           placeholder="Item Name"
         />
