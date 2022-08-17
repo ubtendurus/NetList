@@ -1,6 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8 mr-auto ml-auto">
-    <div class="flex flex-col w-11/12">
+    <div class="flex flex-col w-full">
       <label
         for="group"
         class="
@@ -77,7 +77,7 @@
       >
         <em>Click on a list to see its items.</em>
       </p>
-      <div class="w-full max-w-7xl px-4" v-if="selectedGroupId != 0">
+      <div class="w-full px-4" v-if="selectedGroupId != 0">
         <div class="border rounded-lg border pb-6 border-gray-200 w-5xl">
           <p
             v-if="filterListsbyGroupId.length === 0"
@@ -110,16 +110,23 @@
                   class="focus:outline-none border-b border-gray-200"
                 >
                   <td>
-                    <div class="flex items-center">
-                      <div class="rounded-sm p-1.5">
+                    <div class="flex items-center justify-center">
+                      <div class="rounded-sm p-1.5 w-20">
                         <img
-                          width="36px"
-                          height="36px"
                           src="https://img.icons8.com/clouds/344/checklist.png"
                         />
                       </div>
                       <div class="pl-3">
-                        <div class="flex items-center text-lg leading-none">
+                        <div
+                          class="
+                            flex
+                            items-center
+                            text-lg
+                            leading-none
+                            w-10
+                            break-all
+                          "
+                        >
                           <p class="font-semibold text-gray-800">
                             <router-link
                               :to="{
@@ -147,71 +154,70 @@
                           <!-- //TODO IDEA: Group Desc? Maybe -->
                         </p>
                       </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="w-5">
-                      <router-link
-                        :to="{
-                          name: 'edit-list',
-                          params: { listId: list.listId },
-                        }"
-                      >
-                        <div
-                          class="
-                            flex
-                            items-center
-                            justify-center
-                            px-16
-                            py-1
-                            mt-2
-                            bg-green-100
-                            rounded-full
-                          "
+                      <div class="w-full items-end justify-end flex flex-col">
+                        <router-link
+                          :to="{
+                            name: 'edit-list',
+                            params: { listId: list.listId },
+                          }"
                         >
-                          <p
+                          <div
                             class="
-                              text-xs
-                              font-semibold
-                              leading-none
-                              text-right text-green-800
+                              flex
+                              items-center
+                              justify-center
+                              px-6
+                              py-1
+                              mt-2
+                              bg-green-100
+                              rounded-full
                             "
                           >
-                            Edit List Name
-                          </p>
-                        </div>
-                      </router-link>
-                      <button>
-                        <div
-                          class="
-                            flex
-                            items-center
-                            justify-center
-                            px-2
-                            py-1
-                            mt-2
-                            bg-red-100
-                            rounded-full
-                            cursor:
-                            pointer;
-                            mb-2
-                          "
-                        >
-                          <p
+                            <p
+                              class="
+                                text-xs
+                                font-semibold
+                                leading-3
+                                text-right text-green-800
+                              "
+                            >
+                              Edit List Name
+                            </p>
+                          </div>
+                        </router-link>
+                        <button>
+                          <div
                             class="
-                              text-xs
-                              font-semibold
-                              leading-3
-                              text-red-700
-                              cursor-pointer
-                              px-7
+                              flex
+                              items-center
+                              justify-center
+                              px-6
+                              py-1
+                              mt-2
+                              bg-red-100
+                              rounded-full
+                              cursor:
+                              pointer;
+                              mb-2
                             "
-                            @click.self="deleteList(list.listId)"
                           >
-                            Delete List
-                          </p>
-                        </div>
-                      </button>
+                            <p
+                              class="
+                                text-xs
+                                font-semibold
+                                leading-3
+                                text-red-700
+                                cursor-pointer
+                                px-2
+                                mr-1
+                              "
+                              @click.self="deleteList(list.listId)"
+                            >
+                              Delete List
+                            </p>
+                          </div>
+                        </button>
+                      </div>
                     </div>
                   </td>
                 </tr>
