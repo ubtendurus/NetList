@@ -17,8 +17,9 @@
       >
         <div class="flex items-center">
           <div
-            class="rounded-full relative p-3 flex justify-end text-white"
-          ></div>
+            class="rounded-full relative p-3 flex justify-end leading-10 font-bold text-white text-xl">
+            NetList
+          </div>
         </div>
         <ul class="flex items-center justify-center h-full">
           <li
