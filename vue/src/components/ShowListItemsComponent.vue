@@ -15,10 +15,25 @@
           text-center
           "
           > <em>Click on an item to edit its details.</em> </p>
+          <div v-if="items.length === 0" class="border rounded-lg border pb-6 border-gray-200">
+            <p v-if="items.length === 0"
+            class="
+              text-gray-400
+              dark:text-gray-100
+              text-sm
+              leading-tight
+              tracking-normal
+              ml-3
+              mr-3
+              mt-5
+              text-center
+            "> Your items will display here after creating them! </p>
+          </div>
       <div
         class="border rounded-lg border pb-6 border-gray-200"
         v-if="items.length != 0"
       >
+      
         <div class="px-6 pt-2 overflow-x-auto">
           <div
             class="flex items-center justify-end border-b border-gray-200 p-2"

@@ -1,12 +1,12 @@
 <template>
   <body class="flex items-center justify-center py-8 mr-auto ml-auto">
-    <div class="flex flex-col md:mr-16">
+    <div class="flex flex-col w-11/12">
       <label
         for="group"
         class="
           text-gray-800
           dark:text-gray-100
-          text-sm
+          text-base
           font-bold
           leading-tight
           tracking-normal
@@ -14,7 +14,7 @@
           ml-auto
           mr-auto
         "
-        >Select a Group to Display Its Lists:</label
+        >Select a group to display its lists:</label
       >
       <select
         name="group"
@@ -61,7 +61,9 @@
           {{ group.groupName }}
         </option>
       </select>
-      <p v-if="selectedGroupId != 0" class="
+      <p
+        v-if="selectedGroupId != 0"
+        class="
           text-gray-600
           dark:text-gray-100
           text-base
@@ -70,31 +72,43 @@
           tracking-normal
           mb-2
           ml-auto
-          mr-auto"
-          > <em>Click on a list to see its items.</em> </p>
-      <div class="w-full max-w-5xl px-4" v-if="selectedGroupId != 0">
-        <div class="border rounded-lg border pb-6 border-gray-200">
-          <p v-if="filterListsbyGroupId.length === 0"
-          class="
-            text-gray-400
-            dark:text-gray-100
-            text-sm
-            leading-tight
-            tracking-normal
-            ml-3
-            mr-3
-            mt-12
-            text-align-center
-            text-justify-center
-          "> Your lists will display here after creating them! </p>
-          <div class="px-6 pt-6 overflow-x-auto ">
-            <table class="w-full whitespace-nowrap ">
+          mr-auto
+        "
+      >
+        <em>Click on a list to see its items.</em>
+      </p>
+      <div class="w-full max-w-7xl px-4" v-if="selectedGroupId != 0">
+        <div class="border rounded-lg border pb-6 border-gray-200 w-5xl">
+          <p
+            v-if="filterListsbyGroupId.length === 0"
+            class="
+              text-gray-400
+              dark:text-gray-100
+              text-sm
+              leading-tight
+              tracking-normal
+              ml-3
+              mr-3
+              mt-12
+              text-center
+              justify-center
+              px-12
+              w-5xl
+            "
+          >
+            Your lists will display here after creating them!
+          </p>
+          <div class="px-6 pt-6 overflow-x-auto">
+            <table class="w-full whitespace-nowrap">
               <tbody
                 v-for="list in filterListsbyGroupId"
                 v-bind:key="list.listId"
                 class="group"
               >
-                <tr tabindex="0" class="focus:outline-none border-b border-gray-200">
+                <tr
+                  tabindex="0"
+                  class="focus:outline-none border-b border-gray-200"
+                >
                   <td>
                     <div class="flex items-center">
                       <div class="rounded-sm p-1.5">
@@ -135,62 +149,68 @@
                       </div>
                     </div>
                   </td>
-                  <td class="pl-16">
-                    <div>
+                  <td>
+                    <div class="w-5">
                       <router-link
-                            :to="{
-                              name: 'edit-list',
-                              params: { listId: list.listId },
-                            }">
-                      <div
-                        class="
-                          flex
-                          items-center
-                          justify-center
-                          px-2
-                          py-1
-                          mt-2
-                          bg-green-100
-                          rounded-full
-                        "
+                        :to="{
+                          name: 'edit-list',
+                          params: { listId: list.listId },
+                        }"
                       >
-                        <p
+                        <div
                           class="
-                            text-xs
-                            font-semibold
-                            leading-none
-                            text-right text-green-800
+                            flex
+                            items-center
+                            justify-center
+                            px-16
+                            py-1
+                            mt-2
+                            bg-green-100
+                            rounded-full
                           "
                         >
-                          
-                            Edit List Name
-                        </p>
-                      </div>
-                      </router-link
+                          <p
+                            class="
+                              text-xs
+                              font-semibold
+                              leading-none
+                              text-right text-green-800
+                            "
                           >
+                            Edit List Name
+                          </p>
+                        </div>
+                      </router-link>
                       <button>
-                      <div
-                        class="
-                          flex
-                          items-center
-                          justify-center
-                          px-2
-                          py-1
-                          mt-2
-                          bg-red-100
-                          rounded-full
-                          cursor: pointer;
-                          mb-2
-                        "
-                      
-                      >
-                      
-                        <p class="text-xs font-semibold leading-3 text-red-700 cursor-pointer px-7"
-                        @click.self="deleteList(list.listId)">
-                          
+                        <div
+                          class="
+                            flex
+                            items-center
+                            justify-center
+                            px-2
+                            py-1
+                            mt-2
+                            bg-red-100
+                            rounded-full
+                            cursor:
+                            pointer;
+                            mb-2
+                          "
+                        >
+                          <p
+                            class="
+                              text-xs
+                              font-semibold
+                              leading-3
+                              text-red-700
+                              cursor-pointer
+                              px-7
+                            "
+                            @click.self="deleteList(list.listId)"
+                          >
                             Delete List
-                        </p>
-                      </div>
+                          </p>
+                        </div>
                       </button>
                     </div>
                   </td>

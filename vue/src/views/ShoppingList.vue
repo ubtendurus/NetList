@@ -17,7 +17,7 @@
           class="
             focus:outline-none
             text-sm
-            lg:text-xl
+            lg:text-3xl
             font-semibold
             leading-tight
             text-gray-800

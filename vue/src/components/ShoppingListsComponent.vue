@@ -13,7 +13,7 @@
             tracking-normal
             mb-2
           "
-          >New List Name:</label
+          >List Name:</label
         >
         <input
           id="listName"
@@ -39,7 +39,7 @@
           required
           autofocus
           maxlength="25"
-          placeholder="New List Name"
+          placeholder="Enter a name for your new list"
         />
         <br />
         <label
@@ -53,7 +53,7 @@
             tracking-normal
             mb-2
           "
-          >Select Group to Create List For:</label
+          >Select group to create list for:</label
         >
         <select
           id="groups"

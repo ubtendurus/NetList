@@ -13,7 +13,7 @@
             tracking-normal
             mb-2
           "
-          >Group Name</label
+          >Group Name:</label
         >
         <input
           id="groupName"
@@ -53,7 +53,7 @@
             tracking-normal
             mb-2
           "
-          >Invite Code</label
+          >Invite Code:</label
         >
         <input
           id="groupKey"

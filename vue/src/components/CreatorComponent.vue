@@ -63,7 +63,7 @@
       </div>
       <div class="lg:w-96 w-80">
         <img
-          src="https://media-exp1.licdn.com/dms/image/C4E03AQEbl6DU6nh_lQ/profile-displayphoto-shrink_800_800/0/1652560174047?e=1666224000&v=beta&t=Cr2-S4pS391-EZXnzrW8cNTvDmFTFY4Zutf7NFA4jco"
+          src="https://i.imgur.com/3gW57sB.jpeg"
           class="h-72 w-full object-cover object-center rounded-t-md"
           alt="Andy Colondres"
         />

@@ -14,7 +14,7 @@
               tracking-normal
               mb-2
             "
-            >List Name</label
+            >Change List Name:</label
           >
           <input
             id="listName"

@@ -45,6 +45,7 @@
                 justify-center
                 items-center
                 flex-col
+                 box-shadow: 0 30px 45px -15px rgba(0,111,255,0.65);
               "
             >
               <div class="mb-6">
