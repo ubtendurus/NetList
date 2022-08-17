@@ -14,12 +14,12 @@
               >
                 <td class="p-4">
                   <div class="flex items-center">
-                    <div class="rounded-sm p-1.5">
+                    <div class="rounded-sm p-1.5 w-20">
                       <img
-                        width="36px"
-                        height="36px"
+                        class="w-20"
                         src="https://img.icons8.com/clouds/452/group.png"
                       />
+                      <!--LIGMASTER-->
                     </div>
                     <div class="pl-3">
                       <div class="flex items-center text-lg leading-none">
