@@ -41,8 +41,8 @@
           py-12
         "
       >
-        <h3 class="text-2xl font-semibold leading-6 text-center text-white">
-          About Our Team
+        <h3 class="text-2xl font-semibold leading-6 text-center text-white mt-4">
+          Why NetList?
         </h3>
         <p
           class="
@@ -51,15 +51,31 @@
             text-base
             leading-6
             text-center text-white
-            mt-6
+            mt-8
           "
         >
-          Teamwork is the collaborative effort of a team to achieve a common
-          goal or to complete task in the most effective way. This concept is
-          seen in the greater framework of a team in which indipendent
-          indiviuals who work together towards common goal basic requirement for
-          effective team and company
+          The IntelliGents are all about simple solutions to everyday problems.
+          <br/>
+          <br/>
+          Ugur, a self-proclaimed <em>otaku</em>, 
+          has seen over 1,000 different anime shows and wanted a way to share his anime watchlist and keep it organized.
+          <br/>
+          <br/>
+          Andy, a married man, needed to find a cure for his wife's Post-It note obsession.
+          <br/>
+          <br/>
+          Seth wanted a way to make sharing Christmas lists and shopping easier.
+          <br/>
+          <br/>
+          Zaki.
+          <br/>
+          <br/>
+          After discussing these problems with each other, the seed for NetList was sown. 
+          Now, users across the world can eat from the fruits of our labor!
+          <br/>
+          <br/>
         </p>
+        
       </div>
       <div class="lg:w-96 w-80">
         <img
