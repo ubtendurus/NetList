@@ -125,7 +125,7 @@
                             listId: list.listId,
                           },
                         }"
-                        class="font-semibold text-gray-800"
+                        class="font-semibold text-gray-800 w-full"
                       >
                         <div
                           class="
