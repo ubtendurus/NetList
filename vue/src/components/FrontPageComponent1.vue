@@ -221,7 +221,7 @@
                   text-center
                 "
               >
-                <h2>NetList</h2>
+                <h2>All In One Place</h2>
               </div>
               <div
                 class="

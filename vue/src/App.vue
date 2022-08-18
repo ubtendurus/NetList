@@ -116,7 +116,7 @@
               v-bind:to="{ name: 'creator-view' }"
               v-if="$store.state.token != ''"
             >
-              IntelliGents
+              Creators
             </router-link>
             <!--TODO change the Link-->
           </li>

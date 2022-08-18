@@ -16,7 +16,7 @@
         text-center
       "
     >
-      What our clients say
+      What Our Users Say
     </h1>
     <div
       class="
@@ -239,9 +239,8 @@
               </defs>
             </svg>
             <p class="xl:w-80 text-base leading-normal text-center mt-4">
-              I'm a busy guy--I have films to shoot, cats to pet, and elderly citizens to give up my seat for on public transit.
-              Even as a solo user, NetList allows me to keep all of my to-do lists in one convenient place, so I can spend less time
-              planning and more time doing.
+              I'm a busy guy–I have films to shoot, cats to pet, and elderly citizens to give up my seat for on public transit.
+              Even as a solo user, NetList allows me to keep all of my to-do lists in one convenient place. Now that's what I call a dodged bullet!
             </p>
           </div>
           <div
@@ -393,7 +392,7 @@
             <p class="xl:w-80 text-base leading-normal text-center mt-4">
               NetList is one of the best apps I've ever used and has saved me so much time.
               Now, using NetList's group functionality, I can enlist my friends to help me track down every physical copy of <em>Morbius</em>
-              in existence--no matter where they are!
+              in existence–no matter where they are!
             </p>
           </div>
           <div

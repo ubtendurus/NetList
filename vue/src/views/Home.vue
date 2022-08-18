@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home ">
     <div class="py-6 bg-gray-100 flex justify-center flex-col">
       <div 
       class="
