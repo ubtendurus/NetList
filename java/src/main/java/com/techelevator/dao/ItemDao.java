@@ -12,7 +12,11 @@ public interface ItemDao {
 
     boolean updateItem(Long itemId,Item item);
 
-    boolean updateItemPurchased(Long itemId,Principal principal);
+    boolean updateItemPurchased(Long itemId,Item item,Principal principal);
+
+    boolean markAllDone(Long itemId,Principal principal);
+
+    boolean markAllUnDone(Long itemId,Principal principal);
 
     void deleteItem( Long itemId, Principal principal);
 

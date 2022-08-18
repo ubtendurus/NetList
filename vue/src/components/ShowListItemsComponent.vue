@@ -46,6 +46,32 @@
         <div class="px-6 pt-2 overflow-x-auto">
           <div
             class="flex items-center justify-end border-b border-gray-200 p-2"
+            v-if="markAll"
+          >
+            <button
+              class="
+                text-lrg
+                font-semibold
+                leading-none
+                text-right
+                rounded
+                border border-gray-800
+                px-2
+                py-2
+                text-white
+              "
+              :class="{
+                'text-white bg-red-700': markAll,
+                'text-white bg-green-600': !markAll,
+              }"
+              @click.prevent="markAllUnDone()"
+            >
+              Mark All Undone
+            </button>
+          </div>
+          <div
+            class="flex items-center justify-end border-b border-gray-200 p-2"
+            v-else
           >
             <button
               class="
@@ -65,7 +91,7 @@
               }"
               @click.prevent="markAllDone()"
             >
-              {{ markAll ? "Mark All Undone" : "Mark All Done" }}
+              Mark All Done
             </button>
           </div>
           <table class="w-full whitespace-nowrap">
@@ -159,7 +185,7 @@
                           id="isPurchased"
                           :value="item.itemId"
                           v-model="item.purchased"
-                          @change.prevent="updateItem"
+                          @change.prevent="updateItem(item.itemId, item)"
                         />
                       </p>
                       <p
@@ -259,25 +285,18 @@ export default {
         (category) => category.categoryId === categoryId
       );
     },
-    checkMarkAll() {
-      this.items.forEach((item) => {
-        if (item.purchased) {
-          this.markAll = true;
-        } else {
-          this.markAll = false;
-        }
-      });
-    },
     getAllItems() {
       ItemService.getAllItemByListId(this.listId).then((response) => {
         this.items = response.data;
       });
     },
     //update item in database when checkbox is checked
-    updateItem(event) {
-      let itemId = event.target.value;
+    updateItem(itemId, item) {
+      //let itemId = event.target.value;
       //let isPurchased = event.target.checked;
-      ItemService.updateItemPurchased(itemId);
+      //find item in array by itemId
+      //let item = this.items.find((item) => item.itemId === itemId);
+      ItemService.updateItemPurchased(itemId, item);
     },
     //delete item from database
     deleteItem(itemId) {
@@ -287,15 +306,27 @@ export default {
     },
     markAllDone() {
       this.items.forEach((item) => {
-        if (this.markAll) {
-          item.purchased = false;
-          ItemService.updateItemPurchased(item.itemId);
+        item.purchased = true;
+        this.updateItem(item.itemId, item);
+      });
+      this.markAll = true;
+    },
+    markAllUnDone() {
+      this.items.forEach((item) => {
+        item.purchased = false;
+        this.updateItem(item.itemId, item);
+      });
+      this.markAll = false;
+    },
+    checkMarkAll() {
+      ItemService.getAllItemByListId(this.listId).then((response) => {
+        //check if all items are purchased
+        if (response.data.every((item) => item.purchased === true)) {
+          this.markAll = true;
         } else {
-          item.purchased = true;
-          ItemService.updateItemPurchased(item.itemId);
+          this.markAll = false;
         }
       });
-      this.markAll = !this.markAll;
     },
   },
 };

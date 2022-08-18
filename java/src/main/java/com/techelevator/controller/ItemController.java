@@ -46,8 +46,8 @@ public class ItemController {
 
     @PutMapping("/items/{itemId}/purchased")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public boolean updateItemPurchased(@PathVariable Long itemId, Principal principal) {
-        return  itemDao.updateItemPurchased(itemId,principal);}
+    public boolean updateItemPurchased(@PathVariable Long itemId,@RequestBody Item item, Principal principal) {
+        return  itemDao.updateItemPurchased(itemId,item,principal);}
 
     @GetMapping("/items/{itemId}")
     public Item getItemById(@PathVariable Long itemId,Principal principal){return itemDao.getItemById(itemId,principal);}
@@ -57,4 +57,14 @@ public class ItemController {
     public  void deleteItem(@PathVariable Long itemId, Principal principal){
         itemDao.deleteItem(itemId,principal);
     }
+
+    @PutMapping("/items/{itemId}/markalldone")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public boolean markAllDone(@PathVariable Long itemId, Principal principal) {
+        return  itemDao.markAllDone(itemId,principal);}
+
+    @PutMapping("/items/{itemId}/markallundone")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public boolean markAllUnDone(@PathVariable Long itemId, Principal principal) {
+        return  itemDao.markAllUnDone(itemId,principal);}
 }

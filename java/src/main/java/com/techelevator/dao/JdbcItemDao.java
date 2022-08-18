@@ -47,7 +47,7 @@ public class JdbcItemDao implements ItemDao {
     }
 
     @Override
-    public boolean updateItemPurchased(Long itemId,Principal principal) {
+    public boolean updateItemPurchased(Long itemId,Item item,Principal principal) {
         String sqlPurchaseGet = "SELECT is_purchased FROM items WHERE item_id = ?";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sqlPurchaseGet, itemId);
         boolean isPurchased = false;
@@ -56,7 +56,19 @@ public class JdbcItemDao implements ItemDao {
         }
 
         String sql = "UPDATE items SET is_purchased = ? WHERE item_id = ?";
-        return jdbcTemplate.update(sql, !isPurchased, itemId) > 0;
+        return jdbcTemplate.update(sql, item.isPurchased(), itemId) > 0;
+    }
+
+    @Override
+    public boolean markAllDone(Long itemId,Principal principal) {
+        String sql = "UPDATE items SET is_purchased = ? WHERE list_id = ?";
+        return jdbcTemplate.update(sql, true, itemId) > 0;
+    }
+
+    @Override
+    public boolean markAllUnDone(Long itemId,Principal principal) {
+        String sql = "UPDATE items SET is_purchased = ? WHERE list_id = ?";
+        return jdbcTemplate.update(sql, false, itemId) > 0;
     }
 
     @Override

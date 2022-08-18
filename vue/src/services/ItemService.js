@@ -17,9 +17,9 @@ export default {
         const url = "/categories";
         return axios.get(url);
     },
-  updateItemPurchased(itemId) {
+  updateItemPurchased(itemId,item) {
         const url = "/items/" + itemId + "/purchased";
-    return axios.put(url);
+    return axios.put(url,item);
     },
     deleteItem(itemId) {
         const url = "/items/" + itemId;
@@ -32,6 +32,14 @@ export default {
     getItemById(itemId) {
         const url = "/items/" + itemId;
         return axios.get(url);
+    },
+    markAllDone(itemId){
+        const url = "/items/" + itemId + "/markalldone";
+        return axios.put(url);
+    },
+    markAllUnDone(itemId){
+        const url = "/items/" + itemId + "/markallundone";
+        return axios.put(url);
     }
 
 }
