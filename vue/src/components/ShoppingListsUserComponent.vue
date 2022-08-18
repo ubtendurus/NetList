@@ -111,21 +111,22 @@
                 >
                   <td>
                     <!--Ultimate Hidden LigMaster-->
-                    <router-link
-                      :to="{
-                        name: 'show-list-items',
-                        params: {
-                          listId: list.listId,
-                        },
-                      }"
-                      class="font-semibold text-gray-800"
-                    >
-                      <div class="flex items-center justify-center">
-                        <div class="rounded-sm p-1.5 w-20">
-                          <img
-                            src="https://img.icons8.com/clouds/344/checklist.png"
-                          />
-                        </div>
+
+                    <div class="flex items-center justify-center">
+                      <div class="rounded-sm p-1.5 w-20">
+                        <img
+                          src="https://img.icons8.com/clouds/344/checklist.png"
+                        />
+                      </div>
+                      <router-link
+                        :to="{
+                          name: 'show-list-items',
+                          params: {
+                            listId: list.listId,
+                          },
+                        }"
+                        class="font-semibold text-gray-800"
+                      >
                         <div
                           class="
                             pl-3
@@ -165,73 +166,72 @@
                             <!-- //TODO IDEA: Group Desc? Maybe -->
                           </p>
                         </div>
-
-                        <div class="w-full items-end justify-end flex flex-col">
-                          <router-link
-                            :to="{
-                              name: 'edit-list',
-                              params: { listId: list.listId },
-                            }"
+                      </router-link>
+                      <div class="w-full items-end justify-end flex flex-col">
+                        <router-link
+                          :to="{
+                            name: 'edit-list',
+                            params: { listId: list.listId },
+                          }"
+                        >
+                          <div
+                            class="
+                              flex
+                              items-center
+                              justify-center
+                              px-6
+                              py-1
+                              mt-2
+                              bg-green-100
+                              rounded-full
+                            "
                           >
-                            <div
+                            <p
                               class="
-                                flex
-                                items-center
-                                justify-center
-                                px-6
-                                py-1
-                                mt-2
-                                bg-green-100
-                                rounded-full
+                                text-xs
+                                font-semibold
+                                leading-3
+                                text-right text-green-800
                               "
                             >
-                              <p
-                                class="
-                                  text-xs
-                                  font-semibold
-                                  leading-3
-                                  text-right text-green-800
-                                "
-                              >
-                                Edit List Name
-                              </p>
-                            </div>
-                          </router-link>
-                          <button>
-                            <div
+                              Edit List Name
+                            </p>
+                          </div>
+                        </router-link>
+                        <button>
+                          <div
+                            class="
+                              flex
+                              items-center
+                              justify-center
+                              px-6
+                              py-1
+                              mt-2
+                              bg-red-100
+                              rounded-full
+                              cursor:
+                              pointer;
+                              mb-2
+                            "
+                          >
+                            <p
                               class="
-                                flex
-                                items-center
-                                justify-center
-                                px-6
-                                py-1
-                                mt-2
-                                bg-red-100
-                                rounded-full
-                                cursor:
-                                pointer;
-                                mb-2
+                                text-xs
+                                font-semibold
+                                leading-3
+                                text-red-700
+                                cursor-pointer
+                                px-2
+                                mr-1
                               "
+                              @click.self="deleteList(list.listId)"
                             >
-                              <p
-                                class="
-                                  text-xs
-                                  font-semibold
-                                  leading-3
-                                  text-red-700
-                                  cursor-pointer
-                                  px-2
-                                  mr-1
-                                "
-                                @click.self="deleteList(list.listId)"
-                              >
-                                Delete List
-                              </p>
-                            </div>
-                          </button>
-                        </div>
+                              Delete List
+                            </p>
+                          </div>
+                        </button>
                       </div>
-                    </router-link>
+                    </div>
                   </td>
                 </tr>
               </tbody>

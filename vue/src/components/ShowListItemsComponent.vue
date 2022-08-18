@@ -1,6 +1,6 @@
 <template>
   <body class="flex items-center justify-center py-8">
-    
+
     <div class="w-full max-w-7xl px-4">
       <p v-if="selectedGroupId != 0" class="
           text-gray-600
@@ -33,7 +33,7 @@
         class="border rounded-lg border pb-6 border-gray-200"
         v-if="items.length != 0"
       >
-      
+
         <div class="px-6 pt-2 overflow-x-auto">
           <div
             class="flex items-center justify-end border-b border-gray-200 p-2"
